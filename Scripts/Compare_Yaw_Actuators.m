@@ -1,6 +1,7 @@
-% Copyright 2009 The MathWorks(TM), Inc.
+% Copyright 2009-2015 The MathWorks(TM), Inc.
 
 Select_Turbine_Systems('IM_Yaw Test', WT_Configs);
+open_system('Wind_Turbine/Nacelle');
 
 sim('Wind_Turbine',20);
 Yaw_Data.ideal_act.time = Nacelle_Yaw_DATA.time;

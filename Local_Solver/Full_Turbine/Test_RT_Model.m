@@ -1,18 +1,22 @@
 %% OPEN MODEL
-% Copyright 2012 The MathWorks, Inc.
+% Copyright 2012-2015 The MathWorks, Inc.
 
-mdl = 'Wind_Turbine_rt';
+mdl = 'Wind_Turbine';
 open_system(mdl);
 
-% Slower real-time computers
+% Turbine *without* generator (slower real-time computers)
 Select_Turbine_Systems('H_Pitch S_Yaw Ge Lift_Drag', WT_Configs)
-tvar_StepSize = '1e-2';
-% Fast real-time computers
+rttest_StepSize = '1e-2'; rttest_NumIter = '3';
+
+% Turbine *with* generator (fast real-time computers)
 %Select_Turbine_Systems('H_Pitch S_Yaw Ge Gn Lift_Drag', WT_Configs);
-%tvar_StepSize = '1.5e-3';
+%rttest_StepSize = '1.5e-3'; rttest_NumIter = '2';
+
+set_param(mdl,'SimscapeLogType','None');
+set_param(mdl,'SignalLogging','off');
 
 %% GET REFERENCE RESULTS
-open_system([mdl '/Desktop Settings']);
+Wind_Turbine_setdesktop
 sim(mdl)
 t_ref = tout; y_ref = yout;
 clear tout yout
@@ -26,7 +30,8 @@ xlabel('Time (s)','FontSize',12);ylabel('Results');
 legend({'Reference'},'Location','best')
 
 %% LOAD REAL-TIME SIMULATION SOLVER SETTINGS
-open_system([mdl '/Real Time Settings']);
+Wind_Turbine_setrealtime
+set_param([mdl '/Solver Configuration'],'MaxNonlinIter',rttest_NumIter,'LocalSolverSampleTime',rttest_StepSize);
 sim(mdl)
 t_fs = tout; y_fs = yout;
 
@@ -52,7 +57,7 @@ set_param(gcs, 'SimulationCommand', 'connect')
 set_param(gcs, 'SimulationCommand', 'start')
 
 open_system(mdl);
-disp('Waiting for xPC to finish...');
+disp('Waiting for Simulink Real-Time to finish...');
 pause(1);
 disp(get_param(bdroot,'SimulationStatus'));
 while(~strcmp(get_param(bdroot,'SimulationStatus'),'stopped'))

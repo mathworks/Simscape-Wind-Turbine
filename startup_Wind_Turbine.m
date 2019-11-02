@@ -1,4 +1,4 @@
-% Copyright 2012 The MathWorks(TM), Inc.
+% Copyright 2012-2015 The MathWorks(TM), Inc.
 WT_HomeDir = pwd;
 addpath(pwd);
 addpath([pwd '\Libraries']);
@@ -18,6 +18,7 @@ addpath([pwd '\Scripts']);
 addpath([pwd '\Scripts\Slide_Prep']);
 addpath([pwd '\Reports']);
 addpath([pwd '\Images']);
+addpath([pwd '\Images\Nacelle']);
 addpath([pwd '\PCT']);
 
 if(exist('PCT')==7)
@@ -35,6 +36,11 @@ if(exist('Libraries/Environment')==7)
     end
     cd(WT_HomeDir)
 end
+
+% FOR GENERATED CODE PORTION
+%cd Libraries\Pitch_Controller\PCG
+%startup_Pitch_Controller_PCG
+%cd(WT_HomeDir)
 
 Wind_Turbine_Parameters
 load Actuator_Lookup_data

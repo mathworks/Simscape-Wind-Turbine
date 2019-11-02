@@ -1,7 +1,7 @@
-% Copyright 2009 The MathWorks(TM), Inc.
+% Copyright 2009-2015 The MathWorks(TM), Inc.
 
 open_system([bdroot '/Nacelle']);
-open_system([bdroot '/Pitch Scopes/Pitch Command and Angle (deg)']);
+open_system([bdroot '/Scopes/Pitch Scopes/Pitch Command and Angle (deg)']);
 
 i = find(strcmp({WT_Configs.Type},'I_Pitch Test'));
 Select_Turbine_Systems(WT_Configs(i).Type,WT_Configs);
@@ -24,10 +24,10 @@ HPitch_Force_Data = Pitch_Actuator_Force_DATA.signals.values(:,1);
 HActuator_Force_Data = Pitch_Actuator_Force_DATA.signals.values;
 
 %end
-colordef black;
 Special_Blue = [0 204 255]/255;
 Special_Orange = [245 200 100]/255;
 
+colordef black;
 figure(1);
 clf;
 

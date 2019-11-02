@@ -1,6 +1,4 @@
 %% SETUP MODEL FOR RSIM
-% Copyright 2012 The MathWorks(TM), Inc.
-
 mdl = 'Pitch_Actuation_Hydraulic_Testrig_PCT';
 open_system(mdl);
 PCT_Orifice_Area =  WT_Params.Pitch_Actuator.orifice_area;
@@ -15,8 +13,8 @@ SimSettings = Generate_Sim_Settings(Orifice_array,'PCT_Orifice_Area',rtp);
 numSims = length(SimSettings);
 out = cell(1, numSims);
 
-%% START MATLAB POOL
-matlabpool(2);
+%% START PARALLEL POOL
+parpool(2);
 Initialize_MLPool
 
 %% SIMULATE
@@ -43,5 +41,12 @@ xlabel('Time (s)','FontSize',12,'FontWeight','Bold');
 ylabel('Cylinder Extension','FontSize',12,'FontWeight','Bold');
 legend(cellstr(num2str(fliplr(Orifice_array(1:1:end))')),'FontSize',6);
 
-%% CLOSE MATLABPOOL 
-matlabpool close
+%% CLOSE PARALLEL POOL
+delete(gcp);
+
+%% CLEANUP DIR
+bdclose(mdl);
+delete('*.mex*')
+!rmdir slprj /S/Q
+
+% Copyright 2013-2015 The MathWorks(TM), Inc.

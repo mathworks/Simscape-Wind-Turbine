@@ -1,5 +1,5 @@
 %%% STANDARD CONSTANTS
-% Copyright 2009 The MathWorks(TM), Inc.
+% Copyright 2009-2015 The MathWorks(TM), Inc.
 
 radps2rpm = (1/(2*pi))*60;
 degps2radps = pi/180;
@@ -220,7 +220,7 @@ WT_Params.Transformer.rated_power = 3.16e6;
 
 WT_Params.Generator.Breakers.ron = 0.001;
 WT_Params.Generator.Breakers.rp = 1e6;  %OHMS
-WT_Params.Generator.Breakers.cp = inf;  %FARADS
+WT_Params.Generator.Breakers.cp = 1e9;  %FARADS
 
 WT_Params.Generator.radps2pu = (1/(2*pi*WT_Params.Generator.frequency/(WT_Params.Generator.poles/2)));
 WT_Params.Generator.torque_pu2Nm = WT_Params.Generator.nominal_power/(WT_Params.Generator.frequency*2*pi/(WT_Params.Generator.poles/2));
@@ -274,12 +274,14 @@ WT_Params.Yaw_Actuator.Motor.control_time_constant = 0.02*0.01; %s
 WT_Params.Yaw_Actuator.Motor.resistance = 3.5; %Ohm
 WT_Params.Yaw_Actuator.Motor.damping = 10; %Nm/(rad/s)
 WT_Params.Yaw_Actuator.Motor.voltage = 480; %V
+WT_Params.Yaw_Actuator.Motor.filter_constant = 1e-2; %s
 
 WT_Params.Yaw_Actuator.Ideal.scaling_factor = 2;
 
 WT_Params.Yaw_Actuator.max_yaw_rate = 0.5;  %deg/sec
 
 WT_Params.Yaw_Actuator.ideal_actuator_time_constant = 1e-1;
+
 
 
 %%% YAW CONTROLLER PARAMETERS

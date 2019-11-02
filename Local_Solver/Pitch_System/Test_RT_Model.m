@@ -1,5 +1,5 @@
 %% OPEN MODEL
-% Copyright 2012 The MathWorks, Inc.
+% Copyright 2012-2015 The MathWorks, Inc.
 
 mdl = 'Pitch_Actuation_Hydraulic_Testrig_rt';
 open_system(mdl);
@@ -64,4 +64,7 @@ hold off
 xlabel('Time (s)'); ylabel('Results');
 title('Reference and Real-Time Results','FontSize',14,'FontWeight','Bold');
 legend([h1(1),h2(1),h3(1)],{'Reference','Fixed-Step','Real-Time'},'Location','Best');
+
+%% CLEANUP
+cleanup_rt_dir
 

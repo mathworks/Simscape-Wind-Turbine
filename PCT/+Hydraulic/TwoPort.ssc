@@ -1,6 +1,6 @@
 component(Hidden=true) TwoPort
 % Hydraulic 2-Port Schema
-% Copyright 2005-2008 The MathWorks, Inc.
+% Copyright 2005-2015 The MathWorks, Inc.
   nodes
     A = foundation.hydraulic.hydraulic; % A:left
     B = foundation.hydraulic.hydraulic; % B:right
@@ -11,8 +11,12 @@ component(Hidden=true) TwoPort
     p = { 0 , 'Pa' };     % Pressure
   end
 
-  function setup
-    through( q, A.q, B.q );
-    across( p, A.p, B.p );
+  branches
+    q : A.q -> B.q; 
   end
+
+  equations
+    p == A.p - B.p; 
+  end
+
 end
