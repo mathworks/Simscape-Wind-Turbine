@@ -1,8 +1,9 @@
 function Select_Turbine_Systems(WT_Config_Name,WT_Configs)
 % Copyright 2009 The MathWorks(TM), Inc.
 
-Wind_Turbine
-CurrentPath = gcs;
+%Wind_Turbine
+%CurrentPath = gcs;
+CurrentPath = bdroot;
 SlashInd = findstr(CurrentPath,'/');
 if(~isempty(SlashInd))
     ModelName = CurrentPath(1:SlashInd(1)-1);
@@ -19,7 +20,8 @@ for i=1:length(systems_to_set)
     set_param(char(x.path),'BlockChoice',char(x.choice));
 end
 
-set_param(ModelName,'StopTime',num2str(WT_Configs(WT_config_index).Sim_Time));
+%set_param(ModelName,'StopTime',num2str(WT_Configs(WT_config_index).Sim_Time));
+set_param(bdroot,'StopTime',num2str(WT_Configs(WT_config_index).Sim_Time));
 
 
 

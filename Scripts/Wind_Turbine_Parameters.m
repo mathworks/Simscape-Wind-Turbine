@@ -19,6 +19,7 @@ WT_Params.Lift_Drag_Coeff.coeff_drag =      [0     0     0   0  0   0    0    0 
 WT_Params.Lift_Drag_Coeff.air_density   = 1.22;
 WT_Params.Lift_Drag_Coeff.lift_factor = 200;
 WT_Params.Lift_Drag_Coeff.drag_factor = 10;
+WT_Params.Lift_Drag_Coeff.time_constant = 1e-2;
 
 WT_Params.Air.Density      = 1.22;  % [kg/m^3] (std. day sea-level)
 WT_Params.Air.SpeedOfSound = 340;   % [m/s]    (std. day sea-level)
@@ -103,7 +104,8 @@ WT_Params.Rotor.damping = 100;
 WT_Params.Rotor.nominal_rpm = 14.3004;  %RPM
 WT_Params.Rotor.min_rpm = WT_Params.Rotor.nominal_rpm*0.95;  %RPM
 WT_Params.Rotor.max_rpm = WT_Params.Rotor.nominal_rpm*1.05;  %RPM
-
+%WT_Params.Rotor.Geometry.Profile = SRev_Data_Ellipse(WT_Params.Rotor.radius*1.3,WT_Params.Rotor.Geometry.length*1.7,0,90);
+WT_Params.Rotor.Geometry.Profile = Extr_Data_Ellipse(WT_Params.Rotor.radius*1.3,WT_Params.Rotor.Geometry.length*1.7,0,90,0);
 
 %%% GEARTRAIN PARAMETERS
 WT_Params.Geartrain.mass = 23000;
@@ -116,12 +118,9 @@ WT_Params.Geartrain.inertia_sun_shaft = 10;
 WT_Params.Geartrain.inertia_first_step_shaft = 10;
 WT_Params.Geartrain.Solver_Consistency_Tolerance = 1e-9;
 WT_Params.Geartrain.MSLD_Interface_TF_Coeff = 1e-4;
-WT_Params.Geartrain.MSLD_Interface_TF_Coeff = 1e-4;
 WT_Params.Empty_Geartrain.inertia = 1e-1;
 WT_Params.Empty_Geartrain.damping = 1e-1;
-%WT_Params.Geartrain.MSLD_Interface_TF_Coeff = 1e-1;
-
-
+WT_Params.Geartrain.MSLD_Interface_Filter_Coeff = 0.001;
 
 %%% PITCH CONTROLLER PARAMETERS, INNER LOOP
 WT_Params.Pitch_Controller.P_Gain = 100000;
@@ -213,6 +212,7 @@ WT_Params.Generator.poles = 6;
 WT_Params.Generator.Simple.damping = 20;
 WT_Params.Generator.Simple.inertia = 250;
 WT_Params.Generator.generator_time_constant = 0.01;
+WT_Params.Generator.PSLD_Interface_Filter_Coeff = 0.001;
 
 
 WT_Params.Transformer.mass = 8000;
@@ -262,6 +262,7 @@ WT_Params.Yaw_Actuator.Gearbox_Flexibility.stiffness = 1e5;
 WT_Params.Yaw_Actuator.Gearbox_Flexibility.damping = 1e7;
 WT_Params.Yaw_Actuator.damping = 100000;
 WT_Params.Yaw_Actuator.MSLD_Interface_TF_Coeff = 1e-1;
+WT_Params.Yaw_Actuator.MSLD_Interface_Filter_Coeff = 0.001;
 
 WT_Params.Yaw_Actuator.yaw_ring_diameter = 2.3;
 WT_Params.Yaw_Actuator.yaw_ring_thickness = 0.1;
@@ -292,16 +293,41 @@ WT_Params.Yaw_Controller.Yaw_Rate.I_Gain = 10;
 %%% NACELLE PARAMETERS
 WT_Params.Nacelle.mass = 68000 - WT_Params.Rotor.mass + WT_Params.Geartrain.mass + WT_Params.Transformer.mass;
 WT_Params.Nacelle.inertia = 100*[10 0 0;0 1 0;0 0 10];
-WT_Params.Nacelle.length = 10;
+WT_Params.Nacelle.length = 13;
 WT_Params.Nacelle.CG_Offset.x = 5;
 WT_Params.Nacelle.CG_Offset.y = 0;
 WT_Params.Nacelle.CG_Offset.z = 0;
 WT_Params.Nacelle.Yaw_Ctr_Offset.x = 7;
-WT_Params.Nacelle.Yaw_Ctr_Offset.y = 1;
+WT_Params.Nacelle.Yaw_Ctr_Offset.y = 3;
 WT_Params.Nacelle.Yaw_Ctr_Offset.z = 0;
 WT_Params.Nacelle.damping = 1e6;
 
+%%% NACELLE GEOMETRY
+WT_Params.Nacelle.chamfer = 1;
+%{
+width = WT_Params.Nacelle.Yaw_Ctr_Offset.y;
+chamfer = WT_Params.Nacelle.chamfer;
+xyset1 = [width-chamfer width;-width+chamfer width];
+xyset2 = [Extr_Data_Ring(chamfer,0,91,179)];
+xyset2(:,1) = xyset2(:,1)+(-width+chamfer);
+xyset2(:,2) = xyset2(:,2)+(width-chamfer);
+xyset3 = [-width -chamfer+width;-width -width+chamfer];
+xyset4 = [Extr_Data_Ring(chamfer,0,181,269)];
+xyset4(:,1) = xyset4(:,1)+(-width+chamfer);
+xyset4(:,2) = xyset4(:,2)+(-width+chamfer);
+xyset5 = [-width+chamfer -width;width-chamfer -width];
+xyset6 = [Extr_Data_Ring(chamfer,0,271,359)];
+xyset6(:,1) = xyset6(:,1)+(width-chamfer);
+xyset6(:,2) = xyset6(:,2)+(-width+chamfer);
+xyset7 = [width -width+chamfer;width width-chamfer];
+xyset8 = [Extr_Data_Ring(chamfer,0,1,89)];
+xyset8(:,1) = xyset8(:,1)+(width-chamfer);
+xyset8(:,2) = xyset8(:,2)+(width-chamfer);
 
+WT_Params.Nacelle.Geometry.profile = [xyset1; xyset2; xyset3; xyset4; xyset5; xyset6; xyset7; xyset8];
+%}
+
+WT_Params.Nacelle.Geometry.profile = Extr_Data_RectRounded(WT_Params.Nacelle.Yaw_Ctr_Offset.y*2,WT_Params.Nacelle.Yaw_Ctr_Offset.y*2,WT_Params.Nacelle.chamfer);
 %%% MAIN CONTROLLER PARAMETERS
 WT_Params.Main_Controller.wind_speed_cut_in_lower = 4;      %m/s
 WT_Params.Main_Controller.wind_speed_cut_out = 20;          %m/s, 
@@ -317,4 +343,14 @@ WT_Params.Main_Controller.sample_time = 0.01;               %s
 
 %%% ENVIRONMENT PARAMETERS
 WT_Params.Environment.Simple_Lift_And_Drag.AL_Dynamics = 1e-1;
+
+%%% NEW BLADE GEOMETRY
+WT_Params.Blade.Geometry.LF_Tri = [0 0;WT_Params.Blade.length/4  WT_Params.Blade.Geometry.ctr_to_trailing_edge.z;WT_Params.Blade.length/4 WT_Params.Blade.Geometry.ctr_to_leading_edge.z];
+WT_Params.Blade.Geometry.UF_Tri = [0 0;0  WT_Params.Blade.Geometry.ctr_to_trailing_edge.z;WT_Params.Blade.length*3/4 0;0 WT_Params.Blade.Geometry.ctr_to_leading_edge.z];
+
+WT_Params.Blade.Geometry.LR_Tri = [0 0;WT_Params.Blade.length/4  WT_Params.Blade.Geometry.ctr_to_trailing_edge.z*1.2;WT_Params.Blade.length/4 WT_Params.Blade.Geometry.ctr_to_leading_edge.z*0.63];
+WT_Params.Blade.Geometry.UR_Tri = [0 0;WT_Params.Blade.length*3/4 WT_Params.Blade.Geometry.ctr_to_trailing_edge.z*0.9; WT_Params.Blade.length*0.752 WT_Params.Blade.Geometry.ctr_to_leading_edge.z*1.15];
+
+WT_Params.Blade.Geometry.Lower_Leading_Edge_Cone = [0 0;WT_Params.Blade.Geometry.ctr_to_leading_edge.z*0.96 WT_Params.Blade.length/4;0 WT_Params.Blade.length/4];
+WT_Params.Blade.Geometry.Upper_Leading_Edge_Cone = [0 0;WT_Params.Blade.Geometry.ctr_to_leading_edge.z*0.92 WT_Params.Blade.length*0.752;0 WT_Params.Blade.length*0.752];
 

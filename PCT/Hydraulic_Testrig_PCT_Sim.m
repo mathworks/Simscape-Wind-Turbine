@@ -1,5 +1,5 @@
 %% SETUP MODEL FOR RSIM
-% Copyright 2009 The MathWorks(TM), Inc.
+% Copyright 2012 The MathWorks(TM), Inc.
 
 mdl = 'Pitch_Actuation_Hydraulic_Testrig_PCT';
 open_system(mdl);
