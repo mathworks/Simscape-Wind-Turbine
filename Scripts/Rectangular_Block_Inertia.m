@@ -1,5 +1,5 @@
 % Example function for calculating cylinder inertia
-% Copyright 2009-2016 The MathWorks(TM), Inc.
+% Copyright 2009-2017 The MathWorks(TM), Inc.
 
 function [Inertia] = Rectangular_Block_Inertia(x, y, z, density)
 

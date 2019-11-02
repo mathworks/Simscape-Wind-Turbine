@@ -1,31 +1,39 @@
-% Copyright 2009-2016 The MathWorks, Inc.
+% Copyright 2009-2017 The MathWorks, Inc.
 WT_HomeDir = pwd;
 addpath(pwd);
-addpath([pwd '\Libraries']);
-addpath([pwd '\Libraries\Blades']);
-addpath([pwd '\Libraries\Brakes']);
-addpath([pwd '\Libraries\Environment']);
-addpath([pwd '\Libraries\Geartrain']);
-addpath([pwd '\Libraries\Generator']);
-addpath([pwd '\Libraries\Main_Controller']);
-addpath([pwd '\Libraries\Nacelle']);
-addpath([pwd '\Libraries\Pitch_Actuation']);
-addpath([pwd '\Libraries\Pitch_Controller']);
-addpath([pwd '\Libraries\Tower']);
-addpath([pwd '\Libraries\Yaw_Actuation']);
-addpath([pwd '\Libraries\Yaw_Controller']);
-addpath([pwd '\Scripts']);
-addpath([pwd '\Scripts\Slide_Prep']);
-addpath([pwd '\Reports']);
-addpath([pwd '\Images']);
-addpath([pwd '\Images\Nacelle']);
-addpath([pwd '\PCT']);
+addpath([pwd filesep 'Libraries']);
+addpath([pwd filesep 'Libraries' filesep 'Blades']);
+addpath([pwd filesep 'Libraries' filesep 'Brakes']);
+addpath([pwd filesep 'Libraries' filesep 'Environment']);
+addpath([pwd filesep 'Libraries' filesep 'Geartrain']);
+addpath([pwd filesep 'Libraries' filesep 'Generator']);
+addpath([pwd filesep 'Libraries' filesep 'Main_Controller']);
+addpath([pwd filesep 'Libraries' filesep 'Nacelle']);
+addpath([pwd filesep 'Libraries' filesep 'Pitch_Actuation']);
+addpath([pwd filesep 'Libraries' filesep 'Pitch_Controller']);
+addpath([pwd filesep 'Libraries' filesep 'Tower']);
+addpath([pwd filesep 'Libraries' filesep 'Yaw_Actuation']);
+addpath([pwd filesep 'Libraries' filesep 'Yaw_Controller']);
+addpath([pwd filesep 'Scripts']);
+addpath([pwd filesep 'Scripts' filesep 'Slide_Prep']);
+addpath([pwd filesep 'Reports']);
+addpath([pwd filesep 'Images']);
+addpath([pwd filesep 'Images' filesep 'Nacelle']);
+addpath([pwd filesep 'PCT']);
 
-if(exist('Libraries/Environment')==7)
-    cd Libraries/Environment
+if(exist(['Libraries' filesep 'Environment'])==7)
+    cd(['Libraries' filesep 'Environment']);
     if((exist('+AerodynamicLoads')==7) && ~exist('AerodynamicLoads_Lib'))
         ssc_build AerodynamicLoads
     end
+    cd(WT_HomeDir)
+end
+
+% Testing for generated code
+if(exist(['Libraries' filesep 'Pitch_Controller' filesep 'PCG'])==7)
+    addpath([pwd filesep 'Libraries' filesep 'Pitch_Controller' filesep 'PCG']);
+    cd(['Libraries' filesep 'Pitch_Controller' filesep 'PCG']);
+    startup_Pitch_Controller_PCG
     cd(WT_HomeDir)
 end
 

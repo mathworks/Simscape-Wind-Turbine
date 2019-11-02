@@ -50,4 +50,4 @@ bdclose(mdl);
 delete('*.mex*')
 !rmdir slprj /S/Q
 
-% Copyright 2013-2016 The MathWorks(TM), Inc.
+% Copyright 2013-2017 The MathWorks(TM), Inc.

@@ -1,4 +1,4 @@
-% Copyright 2009-2016 The MathWorks(TM), Inc.
+% Copyright 2009-2017 The MathWorks(TM), Inc.
 
 hub_axis_path = char(find_system(gcs,'FollowLinks','on','Name','Hub Axis'));
 blade_load_path = char(find_system(gcs,'FollowLinks','on','Name','Blade Load'));

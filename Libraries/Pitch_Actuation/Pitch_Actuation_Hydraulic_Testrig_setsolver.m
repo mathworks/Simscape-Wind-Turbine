@@ -1,5 +1,5 @@
 function Pitch_Actuation_Hydraulic_Testrig_setsolver(mdl,deskreal)
-% Copyright 2011-2016 The MathWorks, Inc.
+% Copyright 2011-2017 The MathWorks, Inc.
 
 desktop_solver = 'ode15s';
 

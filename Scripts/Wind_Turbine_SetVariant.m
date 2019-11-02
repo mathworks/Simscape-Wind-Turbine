@@ -1,5 +1,5 @@
 function Wind_Turbine_SetVariant(system,variant)
-% Copyright 2009-2016 The MathWorks, Inc.
+% Copyright 2009-2017 The MathWorks, Inc.
 
 mdl = 'Wind_Turbine';
 nacelle_sys = [mdl '/Nacelle'];

@@ -1,4 +1,4 @@
-% Copyright 2009-2016 The MathWorks(TM), Inc.
+% Copyright 2009-2017 The MathWorks(TM), Inc.
 
 TurbineInputBlockPath = find_system('Wind_Turbine','Name','Turbine Input');
 TurbineInputBlockHandle = get_param(TurbineInputBlockPath,'Handle');
