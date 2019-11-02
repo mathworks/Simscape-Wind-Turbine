@@ -1,5 +1,5 @@
 %%% STANDARD CONSTANTS
-% Copyright 2009-2015 The MathWorks(TM), Inc.
+% Copyright 2009-2016 The MathWorks(TM), Inc.
 
 radps2rpm = (1/(2*pi))*60;
 degps2radps = pi/180;
@@ -176,6 +176,7 @@ WT_Params.Pitch_Actuator.Geometry.outer_radius = 0.1;
 WT_Params.Pitch_Actuator.Geometry.inner_radius = 0.03;
 
 WT_Params.Pitch_Actuator.orifice_area = 1e-03;
+PCT_Orifice_Area =  WT_Params.Pitch_Actuator.orifice_area;
 
 WT_Params.Pitch_Actuator.Sensor.initial_position = 0;
 

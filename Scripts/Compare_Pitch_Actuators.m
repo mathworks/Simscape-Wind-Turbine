@@ -1,4 +1,4 @@
-% Copyright 2009-2015 The MathWorks(TM), Inc.
+% Copyright 2009-2016 The MathWorks(TM), Inc.
 
 open_system([bdroot '/Nacelle']);
 open_system([bdroot '/Scopes/Pitch Scopes/Pitch Command and Angle (deg)']);

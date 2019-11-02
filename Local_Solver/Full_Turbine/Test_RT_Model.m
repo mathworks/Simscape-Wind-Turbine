@@ -1,16 +1,16 @@
 %% OPEN MODEL
-% Copyright 2012-2015 The MathWorks, Inc.
+% Copyright 2012-2016 The MathWorks, Inc.
 
 mdl = 'Wind_Turbine';
 open_system(mdl);
 
 % Turbine *without* generator (slower real-time computers)
-Select_Turbine_Systems('H_Pitch S_Yaw Ge Lift_Drag', WT_Configs)
-rttest_StepSize = '1e-2'; rttest_NumIter = '3';
+%Select_Turbine_Systems('H_Pitch S_Yaw Ge Lift_Drag', WT_Configs)
+%rttest_StepSize = '1e-2'; rttest_NumIter = '3';
 
 % Turbine *with* generator (fast real-time computers)
-%Select_Turbine_Systems('H_Pitch S_Yaw Ge Gn Lift_Drag', WT_Configs);
-%rttest_StepSize = '1.5e-3'; rttest_NumIter = '2';
+Select_Turbine_Systems('H_Pitch S_Yaw Ge Gn Lift_Drag', WT_Configs);
+rttest_StepSize = '1.5e-3'; rttest_NumIter = '2';
 
 set_param(mdl,'SimscapeLogType','None');
 set_param(mdl,'SignalLogging','off');

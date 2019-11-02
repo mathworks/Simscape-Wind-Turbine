@@ -1,9 +1,9 @@
 % CLEANUP RT TEST DIR
-% Copyright 2011-2015 The MathWorks, Inc.
+% Copyright 2011-2016 The MathWorks, Inc.
 
-delete('*_rtbio.m')
-delete('*_rtpt.m')
-delete('*_rtref.m')
+delete('*bio.m')
+delete('*pt.m')
+delete('*ref.m')
 delete('*.dlm')
 delete('*.xml')
 rtw_dirs = dir('*_rtw');

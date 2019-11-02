@@ -1,7 +1,7 @@
 %% SETUP MODEL FOR RSIM
-mdl = 'Pitch_Actuation_Hydraulic_Testrig_PCT';
+mdl = 'Pitch_Actuation_Hydraulic_Testrig';
 open_system(mdl);
-PCT_Orifice_Area =  WT_Params.Pitch_Actuator.orifice_area;
+Hydraulic_Testrig_PCT_config(mdl,'setup');
 
 %% BUILD TARGET
 rtp = Simulink.BlockDiagram.buildRapidAcceleratorTarget(mdl);
@@ -45,8 +45,9 @@ legend(cellstr(num2str(fliplr(Orifice_array(1:1:end))')),'FontSize',6);
 delete(gcp);
 
 %% CLEANUP DIR
+Hydraulic_Testrig_PCT_config(mdl,'cleanup');
 bdclose(mdl);
 delete('*.mex*')
 !rmdir slprj /S/Q
 
-% Copyright 2013-2015 The MathWorks(TM), Inc.
+% Copyright 2013-2016 The MathWorks(TM), Inc.

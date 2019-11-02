@@ -1,3 +1,5 @@
+% Copyright 2009-2016 The MathWorks, Inc.
+
 tvar_Nonlinear_Iterations = '3';
 tvar_StepSize = '0.01';
 tvar_LocalSolver='NE_BACKWARD_EULER_ADVANCER';

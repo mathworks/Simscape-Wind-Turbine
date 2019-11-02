@@ -1,5 +1,5 @@
 function derivedData = cantilever_init( cantileverData )
-% Copyright 2009-2015 The MathWorks(TM), Inc.
+% Copyright 2009-2016 The MathWorks(TM), Inc.
 L = cantileverData.length;
 a = cantileverData.height / 2;
 b = cantileverData.width  / 2;

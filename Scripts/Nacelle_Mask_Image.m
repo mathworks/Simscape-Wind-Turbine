@@ -1,3 +1,5 @@
+% Copyright 2009-2016 The MathWorks, Inc.
+
 PiA_Char = get_param([bdroot '/Nacelle/Pitch System'],'ActiveVariant');
 YaA_Char = get_param([bdroot '/Nacelle/Yaw System'],'ActiveVariant');
 Hub_Char = get_param([bdroot '/Nacelle/Hub Axis'],'ActiveVariant');

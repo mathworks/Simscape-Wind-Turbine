@@ -10,7 +10,7 @@
 % <tr>3.  <a href="matlab:Wind_Turbine;">Link Specification and Design</a><br>
 % <tr>4.  <a href="matlab:Pitch_Control_Ideal_Testrig;">Determine Pitch Actuator Requirements</a><br>
 % <tr>5.  <a href="matlab:Pitch_Actuation_Hydraulic_Testrig;">Test Hydraulic Pitch Actuator Design</a><br>
-% <tr>6.  <a href="matlab:cd([WT_HomeDir '\PCT']);Pitch_Actuation_Hydraulic_Testrig_PCT;edit Hydraulic_Testrig_PCT_Sim;">Distribute Simulations Using Parallel Computing</a><br>
+% <tr>6.  <a href="matlab:cd([WT_HomeDir '\PCT']);Pitch_Actuation_Hydraulic_Testrig;edit Hydraulic_Testrig_PCT_Sim;">Distribute Simulations Using Parallel Computing</a><br>
 % <tr>7.  <a href="matlab:Wind_Turbine;Compare_Pitch_Actuators;">Compare Pitch Actuators Using Full Turbine Model</a><br>
 % <tr><b><u>Yaw, Generator, Blades</u></b><br>
 % <tr>8.  <a href="matlab:Wind_Turbine;Select_Turbine_Systems('IA_Yaw Test', WT_Configs);open_system('Wind_Turbine/Nacelle');open_system('Wind_Turbine/Scopes/Yaw Ctrl Scopes/Yaw Actuator Torque');">Determine Yaw Actuator Requirements</a><br>
@@ -21,16 +21,16 @@
 % <tr>13. <a href="matlab:cd([WT_HomeDir '\Libraries\Blades\Flex_Blades']);startup_Flexible_Blades">Model Blade Flexibility (1G)</a><br>
 % <tr><b><u>Control System</u></b><br>
 % <tr>14. <a href="matlab:cd([WT_HomeDir '\Libraries\Pitch_Controller']);Pitch_Control_Hydraulic_Testrig;">Use Linear Control Theory To Design Compensator</a><br>
-% <tr>15. <a href="matlab:Pitch_Control_Hydraulic_Testrig;open_system('Pitch_Control_Hydraulic_Testrig/Launch sdotool');">Use Optimization Algorithms To Tune Compensator</a><br>
+% <tr>15. <a href="matlab:Pitch_Control_Hydraulic_Testrig;">Use Optimization Algorithms To Tune Compensator</a><br>
 % <tr>16. <a href="matlab:cd([WT_HomeDir '\Libraries\Main_Controller']);Turbine_State_Machine_Testrig;">Open Supervisory Control Testrig</a><br>
 % <tr>17. Document Results: <a href="matlab:open('Wind_Turbine_Report_WIND_TESTS.html');">View Report</a>, <a href="matlab:open('Wind_Turbine_Report_WIND_TESTS.rpt');">Generate Report</a><br>
 % <tr><b><u>Deploy</u></b><br>
 % <tr>18. Improve Simulation Performance With Local Solvers<br>
-% <tr>... a.<a href="matlab:cd([WT_HomeDir '\Local_Solver\Pitch_System']);Pitch_Actuation_Hydraulic_Testrig_rt;edit Test_RT_Model;">Pitch System</a><br>
+% <tr>... a.<a href="matlab:cd([WT_HomeDir '\Local_Solver\Pitch_System']);Pitch_Actuation_Hydraulic_Testrig;edit Test_RT_Model;">Pitch System</a><br>
 % <tr>... b.<a href="matlab:cd([WT_HomeDir '\Local_Solver\Full_Turbine']);Wind_Turbine;edit Test_RT_Model;">Full Turbine</a><br>
 % </style>
 % </style>
 % </html>
 % 
-% Copyright 2009-2015 The MathWorks(TM), Inc.
+% Copyright 2009-2016 The MathWorks(TM), Inc.
 

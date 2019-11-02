@@ -1,11 +1,13 @@
 %% OPEN MODEL
-% Copyright 2012-2015 The MathWorks, Inc.
+% Copyright 2012-2016 The MathWorks, Inc.
 
-mdl = 'Pitch_Actuation_Hydraulic_Testrig_rt';
+%mdl = 'Pitch_Actuation_Hydraulic_Testrig_rt';
+mdl = 'Pitch_Actuation_Hydraulic_Testrig';
 open_system(mdl);
+set_param(mdl,'SimscapeLogType','none');
 
 %% GET REFERENCE RESULTS
-open_system([mdl '/Desktop Settings']);
+Pitch_Actuation_Hydraulic_Testrig_setsolver(mdl,'desktop');
 sim(mdl)
 t_ref = tout; y_ref = yout;
 clear tout yout
@@ -19,7 +21,7 @@ xlabel('Time (s)','FontSize',12);ylabel('Results');
 legend({'Reference'},'Location','best')
 
 %% LOAD REAL-TIME SIMULATION SOLVER SETTINGS
-open_system([mdl '/Real Time Settings']);
+Pitch_Actuation_Hydraulic_Testrig_setsolver(mdl,'realtime');
 sim(mdl)
 t_fs = tout; y_fs = yout;
 
@@ -34,7 +36,7 @@ xlabel('Time (s)','FontSize',12);ylabel('Results');
 legend([h1(1) h2(1)],{'Reference','Fixed-Step'},'Location','best')
 hold off
 
-%% BUILD AND DOWNLOAD XPC TARGET
+%% BUILD AND DOWNLOAD SLRT TARGET
 slbuild(mdl);
 
 %% SET SIMULATION MODE TO EXTERNAL
@@ -45,7 +47,7 @@ set_param(gcs, 'SimulationCommand', 'connect')
 set_param(gcs, 'SimulationCommand', 'start')
 
 open_system(mdl);
-disp('Waiting for xPC to finish...');
+disp('Waiting for SLRT to finish...');
 pause(1);
 disp(get_param(bdroot,'SimulationStatus'));
 while(~strcmp(get_param(bdroot,'SimulationStatus'),'stopped'))
@@ -66,5 +68,6 @@ title('Reference and Real-Time Results','FontSize',14,'FontWeight','Bold');
 legend([h1(1),h2(1),h3(1)],{'Reference','Fixed-Step','Real-Time'},'Location','Best');
 
 %% CLEANUP
+set_param(mdl,'SimscapeLogType','all');
 cleanup_rt_dir
 

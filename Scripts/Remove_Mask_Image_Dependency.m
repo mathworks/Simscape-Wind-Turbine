@@ -1,3 +1,5 @@
+% Copyright 2009-2016 The MathWorks, Inc.
+
 masked_blk_list = find_system(bdroot,'Mask','on');
 for i = 1:length(masked_blk_list)
     maskdispstr = strrep(get_param(masked_blk_list(i),'MaskDisplay'),'image','%image');

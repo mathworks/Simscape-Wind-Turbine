@@ -1,4 +1,4 @@
-% Copyright 2012-2015 The MathWorks(TM), Inc.
+% Copyright 2009-2016 The MathWorks, Inc.
 WT_HomeDir = pwd;
 addpath(pwd);
 addpath([pwd '\Libraries']);
@@ -21,14 +21,6 @@ addpath([pwd '\Images']);
 addpath([pwd '\Images\Nacelle']);
 addpath([pwd '\PCT']);
 
-if(exist('PCT')==7)
-    cd PCT
-    if((exist('+Hydraulic')==7) && ~exist('Hydraulic_Lib'))
-        ssc_build Hydraulic
-    end
-    cd(WT_HomeDir)
-end
-
 if(exist('Libraries/Environment')==7)
     cd Libraries/Environment
     if((exist('+AerodynamicLoads')==7) && ~exist('AerodynamicLoads_Lib'))
@@ -36,11 +28,6 @@ if(exist('Libraries/Environment')==7)
     end
     cd(WT_HomeDir)
 end
-
-% FOR GENERATED CODE PORTION
-%cd Libraries\Pitch_Controller\PCG
-%startup_Pitch_Controller_PCG
-%cd(WT_HomeDir)
 
 Wind_Turbine_Parameters
 load Actuator_Lookup_data
