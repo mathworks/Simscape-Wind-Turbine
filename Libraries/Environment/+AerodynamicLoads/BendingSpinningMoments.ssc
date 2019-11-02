@@ -1,0 +1,63 @@
+component BendingSpinningMoments
+    % Bending and Spinning Moments
+    % This component calculates the bending and spinning moments on the 
+    % blade due to lift and drag. The block requires wind speed, 
+    % rotor speed, and pitch angle of the blade as inputs, as well as the 
+    % lift and drag coefficients. It outputs the angle of attack, as well 
+    % as the bending and spinning moments.
+
+    % Copyright 2011 The MathWorks, Inc.
+
+    inputs
+        v_wind = { 0 , 'm/s' }; % V_wind:left
+        w_rotor = { 0 , 'rad/s' }; % w_rotor:left
+        theta = { 0 , 'rad'}; % pitch_angle:left
+        Cl = { 0 , '1' }; % CL:left
+        Cd = { 0 , '1' }; % CD:left
+    end
+    
+    outputs
+        spin_mom = { 0 , 'N*m' }; % spin:right
+        bend_mom = { 0 , 'N*m' }; % bend:right
+        AoA = { 0 , 'rad' }; % AoA:right
+    end
+    
+    parameters
+        rho = { 850 , 'kg/m^3' }; % Air density
+        blade_length = { 0.1 , 'm' }; % Blade length
+        blade_width = { 0.1 , 'm' }; % Blade width
+        ratio = { 2/3 , '1' }; % Point of application (fraction of blade length)
+    end
+    
+    variables
+        Fl = { 0 , 'N'}; % Lift force
+        Fd = { 0 , 'N'}; % Drag force
+        v_blade = { 0 , 'm/s'}; % Blade speed
+        radius = { 0 , 'm' }; % Radius where force is applied
+    end
+    
+    function setup
+        if blade_length < 0
+            error('Blade length must be strictly positive.')
+        end
+        
+        if blade_width < 0
+            error('Blade width must be strictly positive.')
+        end
+        
+        if ((ratio<0)||(ratio>1))
+            error('Point of application ratio must be between 0 and 1.')
+        end
+    end
+    
+    equations
+        Fl == 0.5*rho*Cl* (v_wind^2+v_blade^2) * (blade_length*blade_width);
+        Fd == 0.5*rho*Cd* (v_wind^2+v_blade^2) * (blade_length*blade_width);
+        radius == blade_length * ratio;
+        v_blade == radius * w_rotor;
+        AoA == atan2(v_wind,v_blade) - theta;
+        bend_mom == -(Fl*cos(AoA) + Fd*sin(AoA)) * radius;
+        spin_mom == (Fl*sin(AoA) - Fd*cos(AoA)) * radius;
+    end
+end
+        
