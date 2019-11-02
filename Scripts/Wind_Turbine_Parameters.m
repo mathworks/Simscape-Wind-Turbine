@@ -330,7 +330,11 @@ xyset8(:,2) = xyset8(:,2)+(width-chamfer);
 WT_Params.Nacelle.Geometry.profile = [xyset1; xyset2; xyset3; xyset4; xyset5; xyset6; xyset7; xyset8];
 %}
 
-WT_Params.Nacelle.Geometry.profile = Extr_Data_RectRounded(WT_Params.Nacelle.Yaw_Ctr_Offset.y*2,WT_Params.Nacelle.Yaw_Ctr_Offset.y*2,WT_Params.Nacelle.chamfer);
+WT_Params.Nacelle.Geometry.profile = Extr_Data_BoxFillet(...
+    WT_Params.Nacelle.Yaw_Ctr_Offset.y*2,...
+    WT_Params.Nacelle.Yaw_Ctr_Offset.y*2,...
+    WT_Params.Nacelle.chamfer);
+
 %%% MAIN CONTROLLER PARAMETERS
 WT_Params.Main_Controller.wind_speed_cut_in_lower = 4;      %m/s
 WT_Params.Main_Controller.wind_speed_cut_out = 20;          %m/s, 

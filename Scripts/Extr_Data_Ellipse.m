@@ -1,7 +1,7 @@
 function [xy_data] = Extr_Data_Ellipse(a, b, deg1, deg2, ctr, varargin)
 %Extr_Data_Ellipse Produce extrusion data for an ellipse.
 %   [xy_data] = Extr_Data_Ellipse(a, b, deg1, deg2, ctr, varargin)
-%   This function returns x-y data for a ring.  
+%   This function returns x-y data for a ring.
 %   You can specify:
 %       Radius 1        a
 %       Radius 2        b
@@ -13,13 +13,13 @@ function [xy_data] = Extr_Data_Ellipse(a, b, deg1, deg2, ctr, varargin)
 %   of the function with no arguments
 %   >> Extr_Data_Ellipse
 %
-%   To see a plot created with your parameter values, 
+%   To see a plot created with your parameter values,
 %   add 'plot' as the final argument
 %   >> Extr_Data_Ellipse(5,2,60,315,1,'plot')
 
 % Copyright 2012-2017 The MathWorks, Inc.
 
-% DEFAULT DATA TO SHOW DIAGRAM
+% Default data to show diagram
 if (nargin == 0)
     a = 5;
     b = 2;
@@ -28,29 +28,30 @@ if (nargin == 0)
     ctr = 1;
 end
 
-% CHECK IF PLOT SHOULD BE PRODUCED
+% Check if plot should be produced
 if (isempty(varargin))
     showplot = 'n';
 else
     showplot = varargin;
 end
 
-% CALCULATE QUARTER ELLIPSE
+% Calculate quarter of ellipse
 xdata = a:-a/50:0;
 for i=1:length(xdata)
-	ydata(i) = b/a*sqrt(a^2-xdata(i)^2);
+    ydata(i) = b/a*sqrt(a^2-xdata(i)^2);
 end
 
-% FULL OUTER ELLIPSE
+% Full outer ellipse
 xy_data = [xdata -fliplr(xdata(1:end-1)) -xdata(2:end) fliplr(xdata(1:end-1)); ydata fliplr(ydata(1:end-1)) -ydata(2:end) -fliplr(ydata(1:end-1))]';
 
-% DETERMINE START AND STOP
+% Determine start and stop
 angles = unwrap(atan2(xy_data(:,2),xy_data(:,1)))*180/pi;
 start = find(angles>=deg1);
 start_ind = start(1);
 finish = find(angles<=deg2);
 finish_ind = finish(end);
 
+% Determine connection between start and finish
 if (ctr == 0)
     xy_data = [0 0; xy_data(start_ind:finish_ind,:)];
 elseif (ctr == 1)
@@ -59,15 +60,37 @@ else
     xy_data = [xy_data(start_ind:finish_ind,:);flipud(xy_data(start_ind:finish_ind,:))*ctr];
 end
 
-
-% PLOT DIAGRAM TO SHOW PARAMETERS AND EXTRUSION
+% Plot diagram to show parameters and extrusion
 if (nargin == 0 || strcmpi(showplot,'plot'))
-    % PLOT EXTRUSION
-    plot(xy_data(:,1),xy_data(:,2),'b-o','LineWidth',1.5);
-    axis('square');
+    
+    % Figure name
+    figString = ['h1_' mfilename];
+    % Only create a figure if no figure exists
+    figExist = 0;
+    fig_hExist = evalin('base',['exist(''' figString ''')']);
+    if (fig_hExist)
+        figExist = evalin('base',['ishandle(' figString ') && strcmp(get(' figString ', ''type''), ''figure'')']);
+    end
+    if ~figExist
+        fig_h = figure('Name',figString);
+        assignin('base',figString,fig_h);
+    else
+        fig_h = evalin('base',figString);
+    end
+    figure(fig_h)
+    clf(fig_h)
+    
+    
+    % Plot extrusion
+    patch(xy_data(:,1),xy_data(:,2),[1 1 1]*0.90,'EdgeColor','none');
+    hold on
+    plot(xy_data(:,1),xy_data(:,2),'-','Marker','o','MarkerSize',4,'LineWidth',2);
+    
+    %    plot(xy_data(:,1),xy_data(:,2),'-','Marker','.','MarkerSize',12,'LineWidth',1.5);
+    axis('equal');
     axis([-1.1 1.1 -1.1 1.1]*max(a,b));
     
-    % SHOW PARAMETERS
+    % Show parameters
     hold on
     
     a_label_ang = 180;
@@ -80,15 +103,15 @@ if (nargin == 0 || strcmpi(showplot,'plot'))
     
     plot([0 a],[0 0],'k:');
     plot([0 b*cos(deg1*pi/180)],[0 b*sin(deg1*pi/180)],'k:');
-    plot([0 b*cos(deg2*pi/180)],[0 b*sin(deg2*pi/180)],'k:');    
-
+    plot([0 b*cos(deg2*pi/180)],[0 b*sin(deg2*pi/180)],'k:');
+    
     arc1_r = 0.6*b;
     arc1 = [(0:1:deg1)]'*pi/180;
     plot(cos(arc1)*arc1_r,sin(arc1)*arc1_r,'k-');
     plot(cos(arc1(1))*arc1_r,sin(arc1(1))*arc1_r,'kd','MarkerFaceColor','k');
     plot(cos(arc1(end))*arc1_r,sin(arc1(end))*arc1_r,'kd','MarkerFaceColor','k');
     text(cos(deg1/2*pi/180)*arc1_r*1.1,sin(deg1/2*pi/180)*arc1_r*1.1,'deg1');
-
+    
     arc2_r = 0.25*b;
     arc2 = [(0:1:deg2)]'*pi/180;
     plot(cos(arc2)*arc2_r,sin(arc2)*arc2_r,'k-');
@@ -102,5 +125,6 @@ if (nargin == 0 || strcmpi(showplot,'plot'))
     
     title(['[xy\_data] = Extr\_Data\_Ellipse(a, b, deg1, deg2, ctr);']);
     hold off
+    box on
     clear xy_data
 end
