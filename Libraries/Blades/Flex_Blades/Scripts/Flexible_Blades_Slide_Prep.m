@@ -62,4 +62,4 @@ axis([0 time_fe(end) -200 200]);
 
 colordef white;
 
-% Copyright 2009-2018 The MathWorks(TM), Inc.
+% Copyright 2009-2019 The MathWorks(TM), Inc.

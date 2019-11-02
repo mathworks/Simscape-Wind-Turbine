@@ -1,5 +1,5 @@
 % CLEANUP RT TEST DIR
-% Copyright 2011-2018 The MathWorks, Inc.
+% Copyright 2011-2019 The MathWorks, Inc.
 
 delete([mdl 'bio.m'])
 delete([mdl 'pt.m'])

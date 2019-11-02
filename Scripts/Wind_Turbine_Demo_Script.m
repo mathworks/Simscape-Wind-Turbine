@@ -18,7 +18,7 @@
 % <tr>10. <a href="matlab:Generator_Testrig;">Model Geartrain, Generator and Grid</a><br>
 % <tr>11. <a href="matlab:Wind_Turbine;Select_Turbine_Systems('I_Pitch IA_Yaw Ge Gn Lift_Drag', WT_Configs);open_system('Wind_Turbine/Scopes/Generator Scopes/Power');open_system('Wind_Turbine/Nacelle');">Add Generator to Full Model</a><br>
 % <tr>12. <a href="matlab:Wind_Turbine;Select_Turbine_Systems('I_Pitch IA_Yaw Ge Lift_Drag', WT_Configs);open_system('Wind_Turbine/Blade Load');">Model Force of Wind On Blades</a><br>
-% <tr>13. <a href="matlab:cd([WT_HomeDir '\Libraries\Blades\Flex_Blades']);startup_Flexible_Blades">Model Blade Flexibility (1G)</a><br>
+% <tr>13. <a href="matlab:cd([WT_HomeDir '\Libraries\Blades\Flex_Blades']);startup_Flexible_Blades">Model Blade Flexibility</a><br>
 % <tr><b><u>Control System</u></b><br>
 % <tr>14. <a href="matlab:cd([WT_HomeDir '\Libraries\Pitch_Controller']);Pitch_Control_Hydraulic_Testrig;">Use Linear Control Theory To Design Compensator</a><br>
 % <tr>15. <a href="matlab:Pitch_Control_Hydraulic_Testrig;">Use Optimization Algorithms To Tune Compensator</a><br>
@@ -32,5 +32,5 @@
 % </style>
 % </html>
 % 
-% Copyright 2009-2018 The MathWorks(TM), Inc.
+% Copyright 2009-2019 The MathWorks(TM), Inc.
 

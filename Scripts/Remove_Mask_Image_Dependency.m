@@ -1,4 +1,4 @@
-% Copyright 2009-2018 The MathWorks, Inc.
+% Copyright 2009-2019 The MathWorks, Inc.
 
 masked_blk_list = find_system(bdroot,'Mask','on');
 for i = 1:length(masked_blk_list)

@@ -1,5 +1,5 @@
 function Hydraulic_Testrig_PCT_config(mdl,setupclean)
-% Copyright 2013-2018 The MathWorks(TM), Inc.
+% Copyright 2013-2019 The MathWorks(TM), Inc.
 
 if strcmp(setupclean,'setup')
     set_param([mdl '/SLRT Scope'],'Commented','on');

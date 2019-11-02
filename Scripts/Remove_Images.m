@@ -1,5 +1,5 @@
 % REMOVE MASK LINES
-% Copyright 2009-2018 The MathWorks(TM), Inc.
+% Copyright 2009-2019 The MathWorks(TM), Inc.
 
 ImagedBlocks =find_system(gcs,'FollowLinks','on','RegExp','on','MaskDisplay','i*IMAGE.jpg*');
 for i=1:size(ImagedBlocks,1)

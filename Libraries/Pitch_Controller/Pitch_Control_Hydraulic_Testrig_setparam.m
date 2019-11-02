@@ -1,5 +1,5 @@
 function Pitch_Control_Hydraulic_Testrig_setparam(initialtuned)
-% Copyright 2017-2018 The MathWorks, Inc.
+% Copyright 2017-2019 The MathWorks, Inc.
 
 if strcmp(initialtuned,'Initial')
     evalin('base','Pitch_Kp = 7000;');

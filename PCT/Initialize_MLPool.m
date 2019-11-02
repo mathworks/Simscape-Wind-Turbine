@@ -1,4 +1,4 @@
-% Copyright 2013-2018 The MathWorks, Inc.
+% Copyright 2013-2019 The MathWorks, Inc.
 TempSimSettings = SimSettings;
 Temppool = gcp;
 Temppoolsize = Temppool.NumWorkers;
