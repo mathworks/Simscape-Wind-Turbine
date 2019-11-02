@@ -1,4 +1,4 @@
-% Copyright 2009-2017 The MathWorks(TM), Inc.
+% Copyright 2009-2018 The MathWorks(TM), Inc.
 
 Select_Turbine_Systems('I_Pitch Test', WT_Configs);
 sim('Wind_Turbine');

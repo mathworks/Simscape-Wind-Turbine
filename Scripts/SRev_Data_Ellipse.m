@@ -16,7 +16,7 @@ function [xy_data] = SRev_Data_Ellipse(a, b, deg1, deg2, varargin)
 %   add 'plot' as the final argument
 %   >> Extr_Data_Ring(10,5,45,315,'plot')
 
-% Copyright 2012-2017 The MathWorks, Inc.
+% Copyright 2012-2018 The MathWorks, Inc.
 
 % DEFAULT DATA TO SHOW DIAGRAM
 if (nargin == 0)

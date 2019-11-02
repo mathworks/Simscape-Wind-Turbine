@@ -1,4 +1,4 @@
-% Copyright 2009-2017 The MathWorks, Inc.
+% Copyright 2009-2018 The MathWorks, Inc.
 set_param(bdroot,'Solver','ODE23t','MaxStep','0.01');
 
 tvar_solverBlock = find_system(bdroot, 'SubClassName', 'solver');

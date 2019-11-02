@@ -1,4 +1,4 @@
-% Copyright 2009-2017 The MathWorks, Inc.
+% Copyright 2009-2018 The MathWorks, Inc.
 WT_HomeDir = pwd;
 addpath(pwd);
 addpath([pwd filesep 'Libraries']);

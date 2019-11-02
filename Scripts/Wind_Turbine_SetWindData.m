@@ -1,5 +1,5 @@
 function Wind_Turbine_SetWindData(dataname)
-% Copyright 2009-2017 The MathWorks, Inc.
+% Copyright 2009-2018 The MathWorks, Inc.
 
 sgb_path = 'Wind_Turbine/Turbine Input/Wind/Wind Input';
 tri_path = 'Wind_Turbine/Turbine Input';

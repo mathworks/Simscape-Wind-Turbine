@@ -1,4 +1,4 @@
-% Copyright 2009-2017 The MathWorks, Inc.
+% Copyright 2009-2018 The MathWorks, Inc.
 
 tvar_Nonlinear_Iterations = '3';
 tvar_StepSize = '0.01';

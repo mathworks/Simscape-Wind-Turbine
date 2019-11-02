@@ -18,4 +18,4 @@ Here are some key points about this demonstration model.
 5. The model Wind_Turbine_Flexible_Blades.slx is not built to be 
 attached to Wind_Turbine.slx.  It is proof of concept only.
 
-Copyright 2009-2017 The MathWorks, Inc.
+Copyright 2009-2018 The MathWorks, Inc.

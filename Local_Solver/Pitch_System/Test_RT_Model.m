@@ -1,5 +1,5 @@
 %% OPEN MODEL
-% Copyright 2012-2017 The MathWorks, Inc.
+% Copyright 2012-2018 The MathWorks, Inc.
 
 %mdl = 'Pitch_Actuation_Hydraulic_Testrig_rt';
 mdl = 'Pitch_Actuation_Hydraulic_Testrig';
