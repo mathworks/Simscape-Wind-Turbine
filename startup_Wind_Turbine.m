@@ -22,7 +22,7 @@ addpath([pwd '\PCT']);
 
 if(exist('PCT')==7)
     cd PCT
-    if((exist('+Hydraulic')==7) && ~exist('Hydraulic_Lib.mdl'))
+    if((exist('+Hydraulic')==7) && ~exist('Hydraulic_Lib'))
         ssc_build Hydraulic
     end
     cd(WT_HomeDir)
@@ -30,17 +30,14 @@ end
 
 if(exist('Libraries/Environment')==7)
     cd Libraries/Environment
-    if((exist('+AerodynamicLoads')==7) && ~exist('AerodynamicLoads_Lib.mdl'))
+    if((exist('+AerodynamicLoads')==7) && ~exist('AerodynamicLoads_Lib'))
         ssc_build AerodynamicLoads
     end
     cd(WT_HomeDir)
 end
 
-% FOR GENERATED CODE PORTION
-%cd Libraries\Pitch_Controller\PCG
-%startup_Pitch_Controller_PCG
-%cd(WT_HomeDir)
-
 Wind_Turbine_Parameters
 load Actuator_Lookup_data
 Wind_Turbine
+open('Wind_Turbine_Demo_Script.html')
+

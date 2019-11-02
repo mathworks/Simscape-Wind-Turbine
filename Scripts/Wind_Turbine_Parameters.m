@@ -183,7 +183,7 @@ WT_Params.Pitch_Actuator.Accumulator.capacity = 0.1;
 WT_Params.Pitch_Actuator.Accumulator.preload_pressure = 1.5e7; % Pa
 WT_Params.Pitch_Actuator.Accumulator.maximum_pressure = 2.5e7; % Pa
 WT_Params.Pitch_Actuator.Accumulator.initial_volume = 0.1;
-WT_Params.Pitch_Actuator.Emergency_Pitch_Valve.max_area = 5e-04;
+WT_Params.Pitch_Actuator.Emergency_Pitch_Valve.max_area = 5e-05;
 
 WT_Params.Pitch_Actuator.constraint_tol = 1e-9;
 

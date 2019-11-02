@@ -18,7 +18,7 @@ Here are some key points about this demonstration model.
 5. The model Wind_Turbine_Flexible_Blades.mdl is not built to be 
 attached to Wind_Turbine.mdl.  It is proof of concept only.
 
-6. This version will only run with R2012b and higher, for it uses 
-   SimMechanics Second Generation Technology features released in R2012b.
+6. This version will only run with R2013a and higher.
+   It uses SimMechanics Second Generation Technology features released in R2012b.
 
-Copyright 2012, MathWorks, Inc.
+Copyright 2013, MathWorks, Inc.

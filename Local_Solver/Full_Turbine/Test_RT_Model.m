@@ -42,7 +42,7 @@ legend([h1(1) h2(1)],{'Reference','Fixed-Step'},'Location','best')
 hold off
 
 %% BUILD AND DOWNLOAD XPC TARGET
-rtwbuild(mdl);
+slbuild(mdl);
 
 %% SET SIMULATION MODE TO EXTERNAL
 set_param(mdl,'SimulationMode','External');
