@@ -1,8 +1,8 @@
 Here are some key points about this demonstration model.
 
-1. You must run "startup_Wind_Turbine.m" to set the path and load key values.
+1. You must open project "Wind_Turbine.prj" to set the path and load key values.
 
-2. You will need a supported compiler.
+2. You may need a supported compiler.
 	http://www.mathworks.com/support/compilers/current_release/
 
 3. Some configurations are invalid.  

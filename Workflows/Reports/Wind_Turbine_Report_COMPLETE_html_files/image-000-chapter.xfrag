@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter>
+<?dbhtml filename="Wind_Turbine_Report_COMPLETE-002.html"?>
+<title>Ideal Pitch Test</title><mwsh:code xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd" xml:space="preserve"><mwsh:comments xml:space="preserve">% CONFIGURE TURBINE</mwsh:comments>
+WT_Configuration = <mwsh:strings xml:space="preserve">'I_Pitch Test'</mwsh:strings>;
+Select_Turbine_Systems(WT_Configuration, WT_Configs);
+</mwsh:code>&sect-003;<mwsh:code xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd" xml:space="preserve"><mwsh:comments xml:space="preserve">% SAVE ELAPSED TIME</mwsh:comments>
+WT_Results_RPT{end+1,1} = WT_Configuration;
+WT_Results_RPT{end,2} = Elapsed_Sim_Time;
+Simulation_Time = str2num(get_param(bdroot,<mwsh:strings xml:space="preserve">'StopTime'</mwsh:strings>));
+WT_Results_RPT{end,3} = 15;
+WT_Results_RPT{end,4} = 15/Elapsed_Sim_Time;
+
+
+</mwsh:code>&sect-004;&sect-005;<para xml:space="preserve"><?db2dom style-name="rgParagraph"?><phrase xml:space="preserve">Pitch actuator has acceptable performance for step response.</phrase><phrase xml:space="preserve"> </phrase></para></chapter>
