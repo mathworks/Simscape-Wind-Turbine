@@ -1,4 +1,4 @@
-% Copyright 2016-2019 The MathWorks, Inc.
+% Copyright 2016-2020 The MathWorks, Inc.
 
 % MAT file containing session
 load('ControlSystemDesignerSession_start.mat');

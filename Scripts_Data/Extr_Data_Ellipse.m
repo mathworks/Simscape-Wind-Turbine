@@ -17,7 +17,7 @@ function [xy_data] = Extr_Data_Ellipse(a, b, deg1, deg2, ctr, varargin)
 %   add 'plot' as the final argument
 %   >> Extr_Data_Ellipse(5,2,60,315,1,'plot')
 
-% Copyright 2012-2019 The MathWorks, Inc.
+% Copyright 2012-2020 The MathWorks, Inc.
 
 % Default data to show diagram
 if (nargin == 0)

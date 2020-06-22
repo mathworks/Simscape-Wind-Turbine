@@ -1,4 +1,4 @@
-% Copyright 2009-2019 The MathWorks, Inc.
+% Copyright 2009-2020 The MathWorks, Inc.
 cd(fileparts(which('Wind_Turbine.slx')))
 cd(['Libraries' filesep 'Environment']);
     if(exist('+AerodynamicLoads','dir') && exist('AerodynamicLoads_Lib.slx','file'))
@@ -17,3 +17,7 @@ if(exist(['Libraries' filesep 'Pitch_Controller' filesep 'PCG'],'dir'))
     rmpath(pwd);
     cd(fileparts(which('Wind_Turbine.slx')))
 end
+
+% If parameter sweep plot still open, close it
+try close(h4_wind_turbine_pct),end
+clear h4_wind_turbine_pct

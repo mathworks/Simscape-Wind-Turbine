@@ -1,4 +1,4 @@
-% Copyright 2009-2019 The MathWorks(TM), Inc.
+% Copyright 2009-2020 The MathWorks(TM), Inc.
 set(gcf,'Position',[765   405   449   336]);
 box on
 text(200,25,'Testing Time (normal): 93.2 sec','FontSize',12,'FontWeight','Bold'); 

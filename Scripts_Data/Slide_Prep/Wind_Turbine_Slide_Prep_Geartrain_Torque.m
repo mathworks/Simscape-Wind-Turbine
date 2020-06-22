@@ -1,4 +1,4 @@
-% Copyright 2009-2019 The MathWorks(TM), Inc.
+% Copyright 2009-2020 The MathWorks(TM), Inc.
 
 colordef black;
 

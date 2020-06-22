@@ -1,4 +1,4 @@
-% Copyright 2009-2019 The MathWorks, Inc.
+% Copyright 2009-2020 The MathWorks, Inc.
 WT_HomeDir = pwd;
 
 curr_proj = simulinkproject;
@@ -19,5 +19,18 @@ end
 
 Wind_Turbine_Parameters
 load Actuator_Lookup_data
-Wind_Turbine
-open('Wind_Turbine_Demo_Script.html')
+
+open_start_content = 1;
+
+% If running in a parallel pool
+% do not open model or demo script
+if(~isempty(ver('parallel')))
+    if(~isempty(getCurrentTask()))
+        open_start_content = 0;
+    end
+end
+
+if(open_start_content)
+    Wind_Turbine
+    open('Wind_Turbine_Demo_Script.html')
+end
