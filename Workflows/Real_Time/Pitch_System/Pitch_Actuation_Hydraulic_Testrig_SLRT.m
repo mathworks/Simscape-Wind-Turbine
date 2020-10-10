@@ -2,72 +2,76 @@
 % Copyright 2012-2020 The MathWorks, Inc.
 
 %mdl = 'Pitch_Actuation_Hydraulic_Testrig_rt';
-mdl = 'Pitch_Actuation_Hydraulic_Testrig';
-open_system(mdl);
+orig_mdl = 'Pitch_Actuation_Hydraulic_Testrig';
+open_system(orig_mdl);
+mdl = [orig_mdl '_rttest_temp'];
+save_system(orig_mdl,mdl);
+
 set_param(mdl,'SimscapeLogType','none');
 
-%% GET REFERENCE RESULTS
+%% Get reference results
 Pitch_Actuation_Hydraulic_Testrig_setsolver(mdl,'desktop');
 sim(mdl)
-t_ref = tout; y_ref = yout;
-clear tout yout
+log_meas = logsout.get('cyl_pos_vel');
+t_ref = log_meas.Values.Time; y_ref = log_meas.Values.Data(:,1);
 
 %% CREATE PLOT
 figure(1)
+temp_colororder = get(gca,'DefaultAxesColorOrder');
 set(gcf,'Position',[552    50   472   301]);
 plot(t_ref,y_ref,'k','LineWidth',3)
 title('Comparing Simulation Results','FontSize',14,'FontWeight','Bold');
 xlabel('Time (s)','FontSize',12);ylabel('Results');
-legend({'Reference'},'Location','best')
+legend({'Reference'},'Location','NorthEast')
 
-%% LOAD REAL-TIME SIMULATION SOLVER SETTINGS
+%% Get results with real-time solver settings
 Pitch_Actuation_Hydraulic_Testrig_setsolver(mdl,'realtime');
 sim(mdl)
-t_fs = tout; y_fs = yout;
+log_meas = logsout.get('cyl_pos_vel');
+t_fs = log_meas.Values.Time; y_fs = log_meas.Values.Data(:,1);
 
-%% ADD FIXED-STEP RESULTS TO PLOT
+%% Compare desktop and real-time results
 figure(1)
-set(gcf,'Position',[552    50   472   301]);
-h1=plot(t_ref,y_ref,'k','LineWidth',3);
 hold on
-h2=stairs(tout, yout,'r','LineWidth',2.5);
-title('Comparing Simulation Results','FontSize',14,'FontWeight','Bold');
-xlabel('Time (s)','FontSize',12);ylabel('Results');
-legend([h1(1) h2(1)],{'Reference','Fixed-Step'},'Location','best')
+h2=stairs(t_fs, y_fs,'Color',temp_colororder(2,:),'LineWidth',2.5);
 hold off
+legend({'Reference','Fixed-Step'},'Location','NorthEast')
 
-%% BUILD AND DOWNLOAD SLRT TARGET
+%% Build and download to real-time target
+% Choose target
+cs = getActiveConfigSet(mdl);
+cs.switchTarget('slrealtime.tlc',[]);
+
+set_param(mdl,'SimMechanicsOpenEditorOnUpdate','off');
 slbuild(mdl);
 
-%% SET SIMULATION MODE TO EXTERNAL
-set_param(mdl,'SimulationMode','External');
+%% Download to real-time target
+tg = slrealtime;
+tg.connect;
 
-%% CONNECT TO TARGET AND RUN
-set_param(gcs, 'SimulationCommand', 'connect')
-set_param(gcs, 'SimulationCommand', 'start')
+%% Run application
+tg.load(mdl)
+tg.start('ReloadOnStop',true,'ExportToBaseWorkspace',true)
 
 open_system(mdl);
 disp('Waiting for SLRT to finish...');
 pause(1);
-disp(get_param(bdroot,'SimulationStatus'));
-while(~strcmp(get_param(bdroot,'SimulationStatus'),'stopped'))
+while(strcmp(tg.status,'running'))
     pause(2);
-    disp(get_param(bdroot,'SimulationStatus'));
+    disp(tg.status);
 end
-%% PLOT REFERENCE AND REAL-TIME RESULTS
+pause(2);
+
+%% Extract results from logged data in Simulink Data Inspector
+y_slrt1 = logsout.LiveStreamSignals.get('cyl_pos_vel');
+
+%% Plot reference and real-time results
 figure(1)
-set(gcf,'Position',[552    50   472   301]);
-h1=plot(t_ref,y_ref,'k','LineWidth',3);
 hold on
-h2=stairs(t_fs,y_fs,'r','LineWidth',2.5);
-h3=stairs(tg.TimeLog,tg.OutputLog,'c:','LineWidth',2.5);
-%stairs(tout,yout,'c-.','LineWidth',3);
+h3=stairs(y_slrt1.Values.Time,y_slrt1.Values.Data(:,1),'c:','LineWidth',2.5);
 hold off
-xlabel('Time (s)'); ylabel('Results');
-title('Reference and Real-Time Results','FontSize',14,'FontWeight','Bold');
-legend([h1(1),h2(1),h3(1)],{'Reference','Fixed-Step','Real-Time'},'Location','Best');
+legend({'Reference','Fixed-Step','Real-Time'},'Location','NorthEast');
 
 %% CLEANUP
-set_param(mdl,'SimscapeLogType','all');
 cleanup_rt_dir
 
