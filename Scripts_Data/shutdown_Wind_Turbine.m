@@ -1,4 +1,4 @@
-% Copyright 2009-2020 The MathWorks, Inc.
+% Copyright 2009-2021 The MathWorks, Inc.
 cd(fileparts(which('Wind_Turbine.slx')))
 cd(['Libraries' filesep 'Environment']);
     if(exist('+AerodynamicLoads','dir') && exist('AerodynamicLoads_Lib.slx','file'))

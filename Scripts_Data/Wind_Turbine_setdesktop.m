@@ -1,5 +1,5 @@
 function Wind_Turbine_setdesktop(mdl)
-% Copyright 2009-2020 The MathWorks, Inc.
+% Copyright 2009-2021 The MathWorks, Inc.
 set_param(mdl,'Solver','ODE23t','MaxStep','0.01');
 
 tvar_solverBlock = find_system(mdl, 'SubClassName', 'solver');

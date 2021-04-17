@@ -1,5 +1,5 @@
 %%% STANDARD CONSTANTS
-% Copyright 2009-2020 The MathWorks(TM), Inc.
+% Copyright 2009-2021 The MathWorks(TM), Inc.
 
 radps2rpm = (1/(2*pi))*60;
 degps2radps = pi/180;
