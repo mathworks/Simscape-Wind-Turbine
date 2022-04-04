@@ -1,4 +1,4 @@
-% Copyright 2009-2021 The MathWorks(TM), Inc.
+% Copyright 2009-2022 The MathWorks(TM), Inc.
 
 Select_Turbine_Systems('IM_Yaw Test', WT_Configs);
 open_system('Wind_Turbine/Nacelle');

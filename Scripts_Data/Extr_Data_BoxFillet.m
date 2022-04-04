@@ -18,7 +18,7 @@ function [xy_data] = Extr_Data_BoxFillet(box_ox, box_oy, rad_o, varargin)
 %   add 'plot' as the final argument
 %   >> Extr_Data_BoxFillet(6,4,1,2,4,0,5,'plot')
 
-% Copyright 2012-2021 The MathWorks, Inc.
+% Copyright 2012-2022 The MathWorks, Inc.
 
 % Default data to show diagram
 if (nargin == 0)

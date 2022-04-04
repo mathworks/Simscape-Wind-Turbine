@@ -1,6 +1,6 @@
 function [Inertia] = Cylinder_Inertia(length, radius,density,sym_axis)
 % Example function for calculating cylinder inertia
-% Copyright 2009-2021 The MathWorks(TM), Inc.
+% Copyright 2009-2022 The MathWorks(TM), Inc.
 
 mass = density*pi*radius^2*length;
 inertia_about_sym_axis = mass*(radius^2)/2;

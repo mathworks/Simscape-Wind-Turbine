@@ -2,7 +2,7 @@
 %WT_Tests = [WT_Configs.Type];
 %Select_Turbine_Systems(WT_Tests(i),WT_Configs)
 
-% Copyright 2009-2021 The MathWorks(TM), Inc.
+% Copyright 2009-2022 The MathWorks(TM), Inc.
 
 FixedStepSolvers = {'ode1';'ode2';'ode3';'ode4'};
 
