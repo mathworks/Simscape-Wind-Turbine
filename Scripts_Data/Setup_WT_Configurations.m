@@ -1,15 +1,19 @@
 % Copyright 2009-2022 The MathWorks(TM), Inc.
 
-hub_axis_path = char(find_system(gcs,'FollowLinks','on','Name','Hub Axis'));
-blade_load_path = char(find_system(gcs,'FollowLinks','on','Name','Blade Load'));
-pitch_controller_path = char(find_system(gcs,'FollowLinks','off','Name','Pitch Controller')); % OFF TO CATCH ONLY TOP LEVEL
-yaw_controller_path = char(find_system(gcs,'FollowLinks','off','Name','Yaw Controller')); % OFF TO CATCH ONLY TOP LEVEL
-main_controller_path = char(find_system(gcs,'FollowLinks','on','Name','Main Controller'));
-pitch_system_path = char(find_system(gcs,'FollowLinks','on','Name','Pitch System'));
-yaw_system_path = char(find_system(gcs,'FollowLinks','on','Name','Yaw System'));
-geartrain_system_path = char(find_system(gcs,'FollowLinks','on','Name','Geartrain'));
-generator_system_path = char(find_system(gcs,'FollowLinks','on','Name','Generator'));
-turbine_input_path = char(find_system(gcs,'FollowLinks','off','Name','Turbine Input'));
+f    = Simulink.FindOptions('FollowLinks',1);
+hub_axis_path = getfullname(Simulink.findBlocks(bdroot,'Name','Hub Axis',f));
+blade_load_path = getfullname(Simulink.findBlocks(bdroot,'Name','Blade Load',f));
+main_controller_path = getfullname(Simulink.findBlocks(bdroot,'Name','Main Controller',f));
+pitch_system_path = getfullname(Simulink.findBlocks(bdroot,'Name','Pitch System',f));
+yaw_system_path = getfullname(Simulink.findBlocks(bdroot,'Name','Yaw System',f));
+geartrain_system_path = getfullname(Simulink.findBlocks(bdroot,'Name','Geartrain',f));
+generator_system_path = getfullname(Simulink.findBlocks(bdroot,'Name','Generator',f));
+
+f    = Simulink.FindOptions('FollowLinks',0);
+turbine_input_path = getfullname(Simulink.findBlocks(bdroot,'Name','Turbine Input',f));
+pitch_controller_path = getfullname(Simulink.findBlocks(bdroot,'Name','Pitch Controller',f));
+yaw_controller_path = getfullname(Simulink.findBlocks(bdroot,'Name','Yaw Controller',f));
+
 
 WT_Configs_TBL_COLS  = {'Type'                           'BLADE LOAD'    'GEARTRAIN' 'GENERATOR' 'HUB AXIS' 'TURBINE INPUTS'  'MAIN CONTROLLER' 'PITCH ACTUATOR' 'PITCH CONTROLLER' 'YAW ACTUATOR'   'YAW CONTROLLER' 'SIM_TIME'};
 WT_Configs_TABLE{1}  = {'I_Pitch Test'                   'Torque'        'Empty'     'Simple'    'Locked'   'Commands'        'Direct Input'    'Ideal'          'Inner Loop'       'Locked'         'Speed Limit'    15}; % 15

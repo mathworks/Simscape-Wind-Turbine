@@ -1,8 +1,6 @@
 % Copyright 2009-2022 The MathWorks(TM), Inc.
 
-BlocksToSwitch = 'Pitch Controller';
-
-BlockPath = find_system('Wind_Turbine','FollowLinks','on','Name',BlocksToSwitch);
+BlockPath = 'Wind_Turbine/Pitch Controller';
 
 % GET BLOCK INFO (INSTANCE AND SOURCE)
 
