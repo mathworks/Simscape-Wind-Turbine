@@ -1,7 +1,7 @@
 function Pitch_Actuation_Hydraulic_Testrig_setsolver(mdl,deskreal)
-% Copyright 2011-2022 The MathWorks, Inc.
+% Copyright 2011-2023 The MathWorks, Inc.
 
-desktop_solver = 'ode15s';
+desktop_solver = 'ode23t';
 
 realtime_nonlinIter = '3';
 realtime_stepSize = '0.005';

@@ -1,5 +1,5 @@
 function Wind_Turbine_setdesktop(mdl)
-% Copyright 2009-2022 The MathWorks, Inc.
+% Copyright 2009-2023 The MathWorks, Inc.
 set_param(mdl,'Solver','ODE23t','MaxStep','0.01');
 
 f    = Simulink.FindOptions('FollowLinks',0,'LookUnderMasks','none');

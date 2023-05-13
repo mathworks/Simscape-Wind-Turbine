@@ -16,7 +16,7 @@ function [xy_data] = Extr_Data_Ring(ring_or, ring_ir, deg1, deg2, varargin)
 %   add 'plot' as the final argument
 %   >> Extr_Data_Ring(10,5,45,315,'plot')
 
-% Copyright 2012-2022 The MathWorks, Inc.
+% Copyright 2012-2023 The MathWorks, Inc.
 
 % Default data to show diagram
 if (nargin == 0)

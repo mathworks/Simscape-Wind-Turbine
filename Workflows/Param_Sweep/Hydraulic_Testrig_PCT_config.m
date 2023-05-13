@@ -1,13 +1,12 @@
 function Hydraulic_Testrig_PCT_config(mdl,setupclean)
-% Copyright 2013-2022 The MathWorks(TM), Inc.
+% Copyright 2013-2023 The MathWorks(TM), Inc.
 
 if strcmp(setupclean,'setup')
-    set_param([mdl '/SLRT Scope'],'Commented','on');
     set_param(mdl,'SimscapeLogType','none');
     set_param(mdl,'StopTime','6');
     
-    set_param([mdl '/Actuator_1/Fixed Orifice A'],'area','PCT_Orifice_Area');
-    set_param([mdl '/Actuator_1/Fixed Orifice B'],'area','PCT_Orifice_Area');
+    set_param([mdl '/Actuator_1/Fixed Orifice A'],'orifice_area_constant','PCT_Orifice_Area');
+    set_param([mdl '/Actuator_1/Fixed Orifice B'],'orifice_area_constant','PCT_Orifice_Area');
     save_system(mdl);
 else
     set_param([mdl '/SLRT Scope'],'Commented','off');

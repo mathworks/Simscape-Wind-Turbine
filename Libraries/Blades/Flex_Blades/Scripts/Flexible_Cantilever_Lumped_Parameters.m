@@ -1,5 +1,5 @@
 % FLEXIBLE BODY LUMPED PARAMETER DEFINITION
-% Copyright 2009-2022 The MathWorks(TM), Inc.
+% Copyright 2009-2023 The MathWorks(TM), Inc.
 
 %-----------------------------------------
 % Defined in the block mask

@@ -1,4 +1,4 @@
-% Copyright 2009-2022 The MathWorks, Inc.
+% Copyright 2009-2023 The MathWorks, Inc.
 WT_HomeDir = pwd;
 
 curr_proj = simulinkproject;

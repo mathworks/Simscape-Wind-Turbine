@@ -6,7 +6,7 @@ component BendingSpinningMoments
     % lift and drag coefficients. It outputs the angle of attack, as well 
     % as the bending and spinning moments.
 
-    % Copyright 2011-2022 The MathWorks, Inc.
+    % Copyright 2011-2023 The MathWorks, Inc.
 
     inputs
         v_wind = { 0 , 'm/s' }; % V_wind:left
