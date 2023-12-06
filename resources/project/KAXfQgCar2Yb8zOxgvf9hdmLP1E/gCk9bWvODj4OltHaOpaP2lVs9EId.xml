@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Info Type="StartUp" Visible="0" Icon="" File="Scripts_Data/startup_Wind_Turbine.m" Name="startup_Wind_Turbine"/>
+<Info File="Scripts_Data/startup_Wind_Turbine.m" Icon="" Name="startup_Wind_Turbine" Type="StartUp" Visible="0"/>

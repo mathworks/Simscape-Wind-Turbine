@@ -1,7 +1,8 @@
 # **Wind Turbine Model**
-Copyright 2009-2020 The MathWorks(TM), Inc.
+Copyright 2009-2023 The MathWorks(TM), Inc.
 
-[![View Wind Turbine Model on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/25752-wind-turbine-model)
+View on File Exchange: [![View Wind Turbine Model on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/25752-wind-turbine-model)  
+You can also open in MATLAB Online: [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks/Simscape-Wind-Turbine&project=Wind_Turbine.prj)
 
 Open project "Wind_Turbine.prj" to set the path and load key values.
 

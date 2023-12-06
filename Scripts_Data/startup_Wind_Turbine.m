@@ -24,5 +24,5 @@ end
 
 if(open_start_content)
     Wind_Turbine
-    open('Wind_Turbine_Demo_Script.html')
+    web('Wind_Turbine_Demo_Script.html')
 end
