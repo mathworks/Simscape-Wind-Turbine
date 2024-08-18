@@ -1,5 +1,5 @@
 function [simCmdParamValStructs] = Generate_Sim_Settings(param_vals,param_name,rtp)
-% Copyright 2009-2023 The MathWorks(TM), Inc.
+% Copyright 2009-2024 The MathWorks(TM), Inc.
 
 numParamSets = length(param_vals);
 

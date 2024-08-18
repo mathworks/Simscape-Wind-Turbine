@@ -1,4 +1,4 @@
-% Copyright 2009-2023 The MathWorks(TM), Inc.
+% Copyright 2009-2024 The MathWorks(TM), Inc.
 
 f    = Simulink.FindOptions('FollowLinks',1);
 hub_axis_path = getfullname(Simulink.findBlocks(bdroot,'Name','Hub Axis',f));

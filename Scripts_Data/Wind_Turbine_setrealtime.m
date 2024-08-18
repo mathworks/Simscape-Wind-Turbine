@@ -1,5 +1,5 @@
 function Wind_Turbine_setrealtime(mdl)
-% Copyright 2009-2023 The MathWorks, Inc.
+% Copyright 2009-2024 The MathWorks, Inc.
 
 tvar_Nonlinear_Iterations = '3';
 tvar_StepSize = '0.01';

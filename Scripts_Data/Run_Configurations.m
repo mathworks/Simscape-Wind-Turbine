@@ -1,5 +1,5 @@
 %WT_Tests = {'Ideal Pitch Test Only','Ideal Pitch Ideal Yaw Test Only','I_Pitch I_Yaw Simple Lift'};
-% Copyright 2009-2023 The MathWorks(TM), Inc.
+% Copyright 2009-2024 The MathWorks(TM), Inc.
 
 WT_Tests = {WT_Configs.Type};
 

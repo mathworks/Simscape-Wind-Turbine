@@ -1,4 +1,4 @@
-% Copyright 2009-2023 The MathWorks, Inc.
+% Copyright 2009-2024 The MathWorks, Inc.
 
 PiA_Char = get_param([bdroot '/Nacelle/Pitch System'],'ActiveVariant');
 YaA_Char = get_param([bdroot '/Nacelle/Yaw System'],'ActiveVariant');
