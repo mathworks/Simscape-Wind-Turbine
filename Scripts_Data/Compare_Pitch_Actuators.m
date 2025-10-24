@@ -1,60 +1,64 @@
+% This script tests the ideal and hydraulic pitch actuator models in the
+% complete wind turbine model
+%
 % Copyright 2009-2024 The MathWorks(TM), Inc.
 
+%% Open main model and key Scope
 open_system([bdroot '/Nacelle']);
 open_system([bdroot '/Scopes/Pitch Scopes/Pitch Command and Angle (deg)']);
 
-i = find(strcmp({WT_Configs.Type},'I_Pitch Test'));
-Select_Turbine_Systems(WT_Configs(i).Type,WT_Configs);
-disp(['Run ' num2str(i) ': ' char(WT_Configs(i).Type)]);
+%% Configure model for ideal actuators
+i = find(strcmp({WT_Configs.Type},'I_Pitch Test'));     % Find config number
+Select_Turbine_Systems(WT_Configs(i).Type,WT_Configs);  % Configure model
+disp(['Run ' num2str(i) ': ' char(WT_Configs(i).Type)]);% Feedback
+
+%% Run simulation
 sim('Wind_Turbine',WT_Configs(i).Sim_Time);
-Itime_pitch = Blade_Pitch_DATA.time;
-IPitch_Command_Data = Blade_Pitch_DATA.signals.values(:,2);
-IPitch_Angle_Data = Blade_Pitch_DATA.signals.values(:,1);
+
+%% Extract simulation results
+Itime_pitch          = Blade_Pitch_DATA.time;
+IPitch_Command_Data  = Blade_Pitch_DATA.signals.values(:,2);
+IPitch_Angle_Data    = Blade_Pitch_DATA.signals.values(:,1);
 IActuator_Force_Data = Pitch_Actuator_Force_DATA.signals.values(:,1);
 
-i = find(strcmp({WT_Configs.Type},'H_Pitch Test'));
-Select_Turbine_Systems(WT_Configs(i).Type,WT_Configs);
-disp(['Run ' num2str(i) ': ' char(WT_Configs(i).Type)]);
+%% Configure model for hydraulic actuators
+i = find(strcmp({WT_Configs.Type},'H_Pitch Test'));      % Find config number
+Select_Turbine_Systems(WT_Configs(i).Type,WT_Configs);   % Configure model
+disp(['Run ' num2str(i) ': ' char(WT_Configs(i).Type)]); % Feedback
+
+%% Run simulation
 sim('Wind_Turbine',WT_Configs(i).Sim_Time);
-disp('I Pitch Test');
+
+%% Extract simulation results
 Htime_pitch = Blade_Pitch_DATA.time;
 HPitch_Command_Data = Blade_Pitch_DATA.signals.values(:,2);
 HPitch_Angle_Data = Blade_Pitch_DATA.signals.values(:,1);
 HPitch_Force_Data = Pitch_Actuator_Force_DATA.signals.values(:,1);
 HActuator_Force_Data = Pitch_Actuator_Force_DATA.signals.values;
 
-%end
-Special_Blue = [0 204 255]/255;
-Special_Orange = [245 200 100]/255;
+% Create plot
+Special_Blue = '#237BE8';
+Special_Orange ='#E69248';
 
-colordef black;
 figure(1);
-clf;
-
-%new_sb211_h = 400;
-set(gcf,'Position',[504   324   449   336]);
-
-%set(gca,'Position',[0.15 0.63/522*new_sb211_h 0.775 0.341163*522/new_sb211_h])
-%POSITION_211 = [0.15 0.583837 0.775 0.341163*522/new_sb211_h];
-
 subplot(211)
-pai_h = plot(Itime_pitch,IPitch_Angle_Data,'color','r','LineWidth',3);
+pai_h = plot(Itime_pitch,IPitch_Angle_Data,'color',Special_Blue,'LineWidth',3,'DisplayName','Ideal');
 hold on
-pah_h = plot(Htime_pitch,HPitch_Angle_Data,'color','c','LineWidth',3,'LineStyle','-.');
+pah_h = plot(Htime_pitch,HPitch_Angle_Data,'color',Special_Orange,'LineWidth',3,'LineStyle','-.','DisplayName','Hydraulic');
+hold off
 title_h = title('Pitch Angle (deg)');
 ylabel_h = ylabel('Angle (deg)');
 set(title_h,'FontSize',14);
 set(ylabel_h,'FontSize',12);
 grid on
 set(gca,'Box','on');
-%axis([0.2 1.3 -2.15 -0.65]);
+legend('Location','Best')
 
 subplot(212)
-
-pfi_h = plot(Itime_pitch,IActuator_Force_Data,'color','r','LineWidth',3);
+pfi_h = plot(Itime_pitch,IActuator_Force_Data,'color',Special_Blue,'LineWidth',3,'DisplayName','Ideal');
 hold on
-pfh_h = plot(Htime_pitch,HActuator_Force_Data,'color','c','LineWidth',3,'LineStyle','-.');
-
+pfh_h = plot(Htime_pitch,HActuator_Force_Data,'color',Special_Orange,'LineWidth',3,'LineStyle','-.','DisplayName','Hydraulic');
+hold off
 title_h = title('Actuator Force (N)');
 xlabel_h = xlabel('Time (s)');
 ylabel_h = ylabel('Force (N) ');
@@ -63,6 +67,5 @@ set(xlabel_h,'FontSize',12);
 set(ylabel_h,'FontSize',12);
 grid on
 set(gca,'Box','on');
-%axis([0.6 0.9 0.042 0.0447]);
 
-colordef white;
+linkaxes(ah,'x')

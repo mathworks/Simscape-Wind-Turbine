@@ -1,6 +1,6 @@
 % Copyright 2009-2024 The MathWorks(TM), Inc.
 
-colordef black;
+%colordef black;
 
 time = Pitch_Control_H_Angle_DATA.time;
 Angle_Data = Pitch_Control_H_Angle_DATA.signals(1).values(:,1);
@@ -15,7 +15,7 @@ clf;
 Special_Blue = [0 0.5 1];
 
 %new_sb211_h = 400;
-set(gcf,'Position',[765   405   449   336]);
+%set(gcf,'Position',[765   405   449   336]);
 
 %set(gca,'Position',[0.15 0.63/522*new_sb211_h 0.775 0.341163*522/new_sb211_h])
 %POSITION_211 = [0.15 0.583837 0.775 0.341163*522/new_sb211_h];

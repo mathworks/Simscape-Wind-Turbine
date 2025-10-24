@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Wind Turbine Model with Simscape</title>
+<meta name="generator" content="MATLAB 24.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-10-23">
+<meta name="DC.source" content="Wind_Turbine.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Wind Turbine Model with Simscape</h1>
+<!--introduction-->
+<p>
+<img vspace="5" hspace="5" src="Wind_Turbine_Overview_640x360.png" alt=""> </p>
+<p>This example models a wind turbine with pitch actuators, yaw actuators, geartrain, and generator. The fidelity level of each system can be adjusted so that it is suitable for the test being performed. Systems can be locked if they are not in use to reduce the amount of computation and enable targeted testing.</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Model</a>
+</li>
+<li>
+<a href="#2">Nacelle Subsystem</a>
+</li>
+<li>
+<a href="#3">Pitch Actuation</a>
+</li>
+<li>
+<a href="#4">Yaw Actuation</a>
+</li>
+<li>
+<a href="#5">Generator Subsystem</a>
+</li>
+<li>
+<a href="#6">Simulation Results: High Fidelity, Start-Stop Test</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Model</h2>
+<p>The wind turbine model includes the tower, blades, blade loads due to wind, electric grid, and supervisory control.</p>
+<p>
+<a href="matlab:open_system('Wind_Turbine');">Open Model</a>
+</p>
+<img vspace="5" hspace="5" src="Wind_Turbine_01.png" alt=""> <h2 id="2">Nacelle Subsystem</h2>
+<p>The nacelle houses the main subsystems of the wind turbine. The fidelity level of each system can be adjusted using Variant Subsystems. Ideal actuators can be used to assess actuator requirements. Systems that are not used can be locked to reduce computational requirements and simplify analysis of the results.</p>
+<p>
+<a href="matlab:open_system('Wind_Turbine');open_system('Wind_Turbine/Nacelle','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="Wind_Turbine_02.png" alt=""> <h2 id="3">Pitch Actuation</h2>
+<p>A hydraulic network is used to model the blade pitch actuation system. A hydraulic valve controls the flow of fluid to a cylinder that extends or contracts to control the pitch of the blade. The pressure supply is assumed steady. In the event of a power failure to this system, valves will open that enable a spring-loaded accumulator to force the blades to a position that will stop the wind turbine.</p>
+<p>
+<a href="matlab:open_system('sm_wheel_loader');open_system('Wind_Turbine/Nacelle/Pitch%20System/Hydraulic/Hydraulic/Actuator_1','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="Wind_Turbine_03.png" alt=""> <h2 id="4">Yaw Actuation</h2>
+<p>An electric motor and geartrain serve as the actuation system to orient the nacelle in the desired direction. The electric motor is parameterized with a torque-speed curve and the gearbox is modeled as a series of planetary gears to achieve the necessary gear reduction. Four motors are used to orient the nacelle.</p>
+<p>
+<a href="matlab:open_system('sm_wheel_loader');open_system('Wind_Turbine/Nacelle/Yaw%20System/Servomotor/Yaw%20Motor%201','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="Wind_Turbine_04.png" alt=""> <h2 id="5">Generator Subsystem</h2>
+<p>The generator is modeled with an induction machine which is connected to electrical loads and a transformer. The generator can be disconnected from the grid using switches which are opened by the supervisory controller. A flexible shaft connects the generator to the geartrain. The compliance in the shaft is used to separate the mechanical and the electrical networks so that they can be simulated using different techniques. An abstract mathematical formulation is used to model the grid, avoiding the high frequency sinusoidal signals and enabling the simulation to run much faster.</p>
+<p>
+<a href="matlab:open_system('sm_wheel_loader');open_system('Wind_Turbine/Nacelle/Generator/Full','force');">Open Subsystem</a>
+</p>
+<img vspace="5" hspace="5" src="Wind_Turbine_05.png" alt=""> <h2 id="6">Simulation Results: High Fidelity, Start-Stop Test</h2>
+<p>The results below come from a simulation test where the turbine starts at rest, accelerates to operating speed, orients itself to point at the wind, and shuts down.</p>
+<pre class="codeoutput">Elapsed time is 7.9576
+</pre>
+<img vspace="5" hspace="5" src="Wind_Turbine_06.png" alt=""> <img vspace="5" hspace="5" src="Wind_Turbine_07.png" alt=""> <img vspace="5" hspace="5" src="Wind_Turbine_08.png" alt=""> <p class="footer">Copyright 2009-2025 The MathWorks, Inc.<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Wind Turbine Model with Simscape
+% 
+% <<Wind_Turbine_Overview_640x360.png>>
+%
+% This example models a wind turbine with pitch actuators, yaw actuators,
+% geartrain, and generator.  The fidelity level of each system can be adjusted 
+% so that it is suitable for the test being performed.  Systems can be
+% locked if they are not in use to reduce the amount of computation and
+% enable targeted testing.
+% 
+% Copyright 2009-2025 The MathWorks, Inc.
+
+%% Model
+%
+% The wind turbine model includes the tower, blades, blade loads due to wind,
+% electric grid, and supervisory control.
+%
+% <matlab:open_system('Wind_Turbine'); Open Model>
+
+open_system('Wind_Turbine')
+set_param(bdroot,'LibraryLinkDisplay','none')
+ann_h = find_system('Wind_Turbine','MatchFilter',@Simulink.match.allVariants,'FindAll', 'on','type','annotation','Tag','ModelFeatures');
+for anhi=1:length(ann_h)
+    set_param(ann_h(anhi),'Interpreter','off');
+end
+
+Wind_Turbine_SetVariant('Pitch System','Hydraulic');
+Wind_Turbine_SetVariant('Yaw System','Servomotor');
+Wind_Turbine_SetVariant('Hub Axis','Rotate');
+Wind_Turbine_SetVariant('Geartrain','Ideal');
+Wind_Turbine_SetVariant('Generator','Full');
+set_param(bdroot,'SimulationCommand','update')
+
+%% Nacelle Subsystem
+%
+% The nacelle houses the main subsystems of the wind turbine.  The fidelity
+% level of each system can be adjusted using Variant Subsystems.  Ideal
+% actuators can be used to assess actuator requirements.  Systems that are
+% not used can be locked to reduce computational requirements and simplify
+% analysis of the results.
+%
+% <matlab:open_system('Wind_Turbine');open_system('Wind_Turbine/Nacelle','force'); Open Subsystem>
+
+open_system('Wind_Turbine/Nacelle','force');
+
+
+%% Pitch Actuation
+%
+% A hydraulic network is used to model the blade pitch actuation system. A
+% hydraulic valve controls the flow of fluid to a cylinder that extends or
+% contracts to control the pitch of the blade.  The pressure supply is
+% assumed steady.  In the event of a power failure to this system, valves
+% will open that enable a spring-loaded accumulator to force the blades to
+% a position that will stop the wind turbine.
+%
+% <matlab:open_system('sm_wheel_loader');open_system('Wind_Turbine/Nacelle/Pitch%20System/Hydraulic/Hydraulic/Actuator_1','force'); Open Subsystem>
+
+open_system('Wind_Turbine/Nacelle/Pitch System/Hydraulic/Hydraulic/Actuator_1','force');
+
+%% Yaw Actuation
+%
+% An electric motor and geartrain serve as the actuation system to orient
+% the nacelle in the desired direction.  The electric motor is
+% parameterized with a torque-speed curve and the gearbox is modeled as a
+% series of planetary gears to achieve the necessary gear reduction.  Four
+% motors are used to orient the nacelle.
+%
+% <matlab:open_system('sm_wheel_loader');open_system('Wind_Turbine/Nacelle/Yaw%20System/Servomotor/Yaw%20Motor%201','force'); Open Subsystem>
+
+open_system('Wind_Turbine/Nacelle/Yaw System/Servomotor/Servomotor/Yaw Motor 1','force');
+
+%% Generator Subsystem
+%
+% The generator is modeled with an induction machine which is connected to
+% electrical loads and a transformer. The generator can be disconnected
+% from the grid using switches which are opened by the supervisory
+% controller. A flexible shaft connects the generator to the geartrain.
+% The compliance in the shaft is used to separate the mechanical and the
+% electrical networks so that they can be simulated using different
+% techniques.  An abstract mathematical formulation is used to model
+% the grid, avoiding the high frequency sinusoidal signals and enabling the
+% simulation to run much faster.
+%
+% <matlab:open_system('sm_wheel_loader');open_system('Wind_Turbine/Nacelle/Generator/Full','force'); Open Subsystem>
+
+open_system('Wind_Turbine/Nacelle/Generator/Full','force');
+
+%% Simulation Results: High Fidelity, Start-Stop Test
+%%
+%
+% The results below come from a simulation test where the turbine starts at
+% rest, accelerates to operating speed, orients itself to point at the
+% wind, and shuts down.
+%
+
+Select_Turbine_Systems('H_Pitch S_Yaw Ge Lift_Drag', WT_Configs);
+Wind_Turbine_SetWindData('Start Stop');
+sim('Wind_Turbine');
+
+Wind_Turbine_plot1pitch
+Wind_Turbine_plot3pitchActuation(simlog_Wind_Turbine.Nacelle.Pitch_System.Hydraulic.Hydraulic.Actuator_1)
+Wind_Turbine_plot2yaw
+
+%%
+
+close all
+bdclose('Wind_Turbine');
+
+##### SOURCE END #####
+-->
+</body>
+</html>

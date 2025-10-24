@@ -1,14 +1,14 @@
 % Copyright 2009-2024 The MathWorks(TM), Inc.
 
-colordef black;
+%colordef black;
 
 %Special_Blue = [0 204 255]/255;
 Special_Blue = [0 0.5 1];
 
 %if(1==2)
 time_gen = Generator_Power_DATA.time;
-Speed_Data = Generator_Speed_DATA.signals(:,2).values;
-Power_Data = Generator_Power_DATA.signals(:,1).values;
+Speed_Data = Generator_Speed_DATA.signals.values(:,2);
+Power_Data = Generator_Power_DATA.signals.values(:,1);
 
 %end
 figure(1);

@@ -3,3 +3,4 @@
 
 bdclose(mdl)
 delete([mdl '.slx']);
+delete([mdl '~mdl.slmx']);

@@ -10,7 +10,7 @@ open_system(orig_mdl);
 
 % Turbine *with* generator (fast real-time computers)
 Select_Turbine_Systems('H_Pitch S_Yaw Ge Gn Lift_Drag', WT_Configs);
-rttest_StepSize = '1.5e-3'; rttest_NumIter = '2';
+rttest_StepSize = '1e-2'; rttest_NumIter = '2';
 
 mdl = [orig_mdl '_rttest_temp'];
 save_system(orig_mdl,mdl);

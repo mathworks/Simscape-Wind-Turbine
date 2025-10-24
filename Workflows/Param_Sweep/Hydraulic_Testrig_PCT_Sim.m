@@ -8,21 +8,17 @@ open_system(orig_mdl);
 mdl = [orig_mdl '_pct_temp'];
 save_system(orig_mdl,mdl);
 
-%% Configure model for tests
-Hydraulic_Testrig_PCT_config(mdl,'setup');
-
 %% Generate parameter sets
 Orifice_array = [1e-6:5e-7:1.95e-5]; 
 
 for i=1:length(Orifice_array)
     simInput(i) = Simulink.SimulationInput(mdl);
-    simInput(i) = simInput(i).setVariable('PCT_Orifice_Area',Orifice_array(i));
+    WT_Params.Pitch_Actuator.orifice_area = Orifice_array(i);
+    simInput(i) = simInput(i).setVariable('WT_Params',WT_Params);
+    simInput(i) = simInput(i).setModelParameter('StopTime','6');
+    simInput(i) = simInput(i).setModelParameter('SimscapeLogType','none');
+    simInput(i) = simInput(i).setModelParameter('SimMechanicsOpenEditorOnUpdate','off');
 end
-
-
-%% Adjust settings and save
-set_param(mdl,'SimMechanicsOpenEditorOnUpdate','off');
-save_system(mdl)
 
 %% Run parameter sweep in parallel
 timerVal = tic;

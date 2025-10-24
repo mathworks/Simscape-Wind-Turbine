@@ -3,7 +3,8 @@
 % <html>
 % <span style="font-family:Arial">
 % <span style="font-size:10pt">
-% <tr><b><u>Example Tasks:</u></b> <a href="matlab:web('Wind_Turbine_Demo_Script.html');">Demo Script</a><br><br>
+% <tr>Click on hyperlinks to configure wind turbine model (<a href="matlab:web('Wind_Turbine_Demo_Script.html');">return to Demo Script</a>)<br>
+% <br>
 % <tr><b><u>Subystem Test Configurations:</u></b><br>
 % <tr>1. Pitch System: <a href="matlab:Select_Turbine_Systems('I_Pitch Test', WT_Configs);">Ideal</a>, <a href="matlab:Select_Turbine_Systems('H_Pitch Test', WT_Configs);">Hydraulic</a><br>
 % <tr>2. Yaw System: <a href="matlab:Select_Turbine_Systems('IA_Yaw Test', WT_Configs);">Ideal Actuator</a>, <a href="matlab:Select_Turbine_Systems('IM_Yaw Test', WT_Configs);">Ideal Motor</a>, <a href="matlab:Select_Turbine_Systems('S_Yaw Test', WT_Configs);">Servomotor</a><br>
