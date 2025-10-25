@@ -4,4 +4,4 @@ function cantileverdata = cantilever_aluminum
     cantileverdata.width  = 0.05 ;   % m
     
     cantileverdata.material = Flexible_Cantilever_Properties_Aluminum1060;
-% Copyright 2009-2024 The MathWorks(TM), Inc.
+% Copyright 2009-2025 The MathWorks(TM), Inc.

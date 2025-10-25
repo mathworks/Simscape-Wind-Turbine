@@ -1,7 +1,7 @@
 function Wind_Turbine_plot3pitchActuation(simlog_hydrAct)
 % Code to plot simulation results from Wind_Turbine.slx
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Reuse figure if it exists, else create new figure
 if~(hasChild(simlog_hydrAct,'Hydraulic_Cylinder'))

@@ -1,4 +1,4 @@
-% Copyright 2009-2024 The MathWorks(TM), Inc.
+% Copyright 2009-2025 The MathWorks(TM), Inc.
 
 BlockPath = 'Wind_Turbine/Pitch Controller';
 

@@ -1,4 +1,4 @@
-% Copyright 2009-2024 The MathWorks(TM), Inc.
+% Copyright 2009-2025 The MathWorks(TM), Inc.
 k=0;
 open_system('Generator_Testrig')
 

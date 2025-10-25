@@ -1,7 +1,7 @@
 % This script tests the ideal and hydraulic pitch actuator models in the
 % complete wind turbine model
 %
-% Copyright 2009-2024 The MathWorks(TM), Inc.
+% Copyright 2009-2025 The MathWorks(TM), Inc.
 
 %% Open main model and key Scope
 open_system([bdroot '/Nacelle']);

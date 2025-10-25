@@ -1,6 +1,6 @@
 % Code to plot simulation results from Wind_Turbine
 %
-% Copyright 2023-2024 The MathWorks, Inc.
+% Copyright 2023-2025 The MathWorks, Inc.
 
 %% Reuse figure if it exists, else create new figure
 figString = ['h4_' mfilename];
