@@ -1,4 +1,4 @@
-% Copyright 2009-2025 The MathWorks, Inc.
+% Copyright 2009-2026 The MathWorks, Inc.
 WT_HomeDir = pwd;
 
 curr_proj = simulinkproject;
@@ -11,6 +11,11 @@ cd(curr_proj.RootFolder);
 
 Wind_Turbine_Parameters
 load Actuator_Lookup_data
+
+%load WindInputTestSeq.mat
+%load TurbinePitchCmds.mat
+%load TurbineYawCmds.mat
+
 
 open_start_content = 1;
 

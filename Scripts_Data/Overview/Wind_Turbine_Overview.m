@@ -15,5 +15,5 @@
 % * *Assess grid integration* with model of generator and electric grid.
 % * *Run HIL tests* with real-time capable model of wind turbine.
 %
-% Copyright 2009-2025 The MathWorks, Inc.
+% Copyright 2009-2026 The MathWorks, Inc.
 

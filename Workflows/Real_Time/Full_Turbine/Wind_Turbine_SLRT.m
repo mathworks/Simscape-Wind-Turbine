@@ -1,5 +1,5 @@
 %% OPEN MODEL
-% Copyright 2012-2025 The MathWorks, Inc.
+% Copyright 2012-2026 The MathWorks, Inc.
 
 orig_mdl = 'Wind_Turbine';
 open_system(orig_mdl);

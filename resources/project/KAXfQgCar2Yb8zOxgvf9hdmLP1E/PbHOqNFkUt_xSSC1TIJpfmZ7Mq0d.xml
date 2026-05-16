@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Info File="Scripts_Data/shutdown_Wind_Turbine.m" Icon="" Name="shutdown_Wind_Turbine" Type="Shutdown" Visible="0"/>
+<Info File="Scripts_Data/shutdown_Wind_Turbine.m" GroupUUID="default" Icon="" Name="shutdown_Wind_Turbine" Type="Shutdown" Visible="0">
+    <Extension Name="ShutdownPrev" Value="HEAD"/>
+</Info>

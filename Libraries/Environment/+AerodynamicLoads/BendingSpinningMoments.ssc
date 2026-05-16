@@ -6,7 +6,7 @@ component BendingSpinningMoments
     % lift and drag coefficients. It outputs the angle of attack, as well 
     % as the bending and spinning moments.
 
-    % Copyright 2011-2025 The MathWorks, Inc.
+    % Copyright 2011-2026 The MathWorks, Inc.
 
     inputs
         v_wind = { 0 , 'm/s' }; % V_wind:left
@@ -35,7 +35,8 @@ component BendingSpinningMoments
         v_blade = { 0 , 'm/s'}; % Blade speed
         radius = { 0 , 'm' }; % Radius where force is applied
     end
-    
+
+%{    
     function setup
         if blade_length < 0
             error('Blade length must be strictly positive.')
@@ -49,8 +50,11 @@ component BendingSpinningMoments
             error('Point of application ratio must be between 0 and 1.')
         end
     end
-    
+%}    
     equations
+        assert(blade_length>=0)
+        assert(blade_width >=0)
+        assert((ratio>0)||(ratio<1))
         Fl == 0.5*rho*Cl* (v_wind^2+v_blade^2) * (blade_length*blade_width);
         Fd == 0.5*rho*Cd* (v_wind^2+v_blade^2) * (blade_length*blade_width);
         radius == blade_length * ratio;

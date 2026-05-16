@@ -4,4 +4,4 @@ Flex_Blades_Params
 
 Wind_Turbine_Flexible_Blades
 
-% Copyright 2009-2025 The MathWorks(TM), Inc.
+% Copyright 2009-2026 The MathWorks(TM), Inc.

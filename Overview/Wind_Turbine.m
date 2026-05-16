@@ -8,7 +8,7 @@
 % locked if they are not in use to reduce the amount of computation and
 % enable targeted testing.
 % 
-% Copyright 2009-2025 The MathWorks, Inc.
+% Copyright 2009-2026 The MathWorks, Inc.
 
 %% Model
 %
